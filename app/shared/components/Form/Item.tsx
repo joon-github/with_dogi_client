@@ -21,21 +21,25 @@ export default function Item({ label, fieldKey, validation, children }: Props) {
 
   const isError = errors?.[fieldKey];
   const errorClasses = isError
-    ? "border rounded-md border-red-500 focus:border-red-500"
+    ? "border border-red-500 focus:border-red-500"
     : "border";
   return (
     <>
-      <div className={`flex items-center h-12 ${errorClasses}`}>
+      <div
+        className={`flex items-center h-12 ${errorClasses} rounded-md  bg-white`}
+      >
         <label htmlFor={label} className="w-20 pl-3 border-r font-medium">
           {label}
         </label>
         {childWithProps}
       </div>
-      {errors?.[fieldKey] && (
-        <div className="text-red-400">
-          {errors?.[fieldKey]?.message?.toString()}
-        </div>
-      )}
+      <div className="h-8">
+        {errors?.[fieldKey] && (
+          <div className="text-red-400">
+            {errors?.[fieldKey]?.message?.toString()}
+          </div>
+        )}
+      </div>
     </>
   );
 }
