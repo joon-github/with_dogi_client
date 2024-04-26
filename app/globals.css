@@ -4,8 +4,24 @@
 
 :root {
 }
-
+main,
 body {
-  background: rgb(251, 251, 251);
+  background: #fff;
   height: 100vh;
+}
+
+input {
+  box-shadow: 0 0 0 0 !important; /* 자동 완성시 생기는 background 효과 삭제용 */
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  transition: background-color 5000s ease-in-out 0s !important; /* 자동 완성시 생기는 background 효과 삭제용 */
+}
+
+a {
+  text-decoration: none;
+  color: rgb(40, 75, 199);
 }

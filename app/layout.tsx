@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import ReactQueryProcider from "./providers/ReactQueryProvider";
-// import Loader from './shared/components/Loader';
+import Loader from "./shared/components/Loader";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,8 +20,8 @@ export default function RootLayout({
     <html lang="en">
       <ReactQueryProcider>
         <body className={inter.className}>{children}</body>
+        <Loader />
       </ReactQueryProcider>
-      {/* <Loader />  */}
     </html>
   );
 }

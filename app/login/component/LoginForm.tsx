@@ -1,10 +1,12 @@
 "use client";
+import useLoadingMutation from "@/app/shared/\bhooks/useLoadingMutation";
 import FormComponents from "@/app/shared/components/Form";
+import { LuUser2, LuLock } from "react-icons/lu";
 import useOnSubmitLoginForm from "../fetcher/useOnSubmitLoginForm";
-
 export default function LoginForm() {
-  const { mutate: onSubmit, isSuccess } = useOnSubmitLoginForm();
-  console.log(isSuccess)
+  const submitLoginForm = useOnSubmitLoginForm();
+  const { mutate: onSubmit, isSuccess } = useLoadingMutation(submitLoginForm);
+
   const emailValidation = {
     required: "계정을 입력해 주세요.",
     pattern: {
@@ -19,7 +21,8 @@ export default function LoginForm() {
     <FormComponents>
       <FormComponents.Form onSubmit={onSubmit}>
         <FormComponents.Item
-          label="이메일"
+          label="아이디"
+          icon={<LuUser2 size={22} />}
           fieldKey="email"
           validation={emailValidation}
         >
@@ -28,9 +31,10 @@ export default function LoginForm() {
         <FormComponents.Item
           label="비밀번호"
           fieldKey="password"
+          icon={<LuLock size={22} />}
           validation={passwordValidation}
         >
-          <FormComponents.Input type="password"/>
+          <FormComponents.Input type="password" />
         </FormComponents.Item>
         <FormComponents.SubmitButton />
       </FormComponents.Form>

@@ -1,19 +1,13 @@
 "use client";
-import axios, { AxiosError } from "axios";
+import axios, { AxiosError, AxiosResponse } from "axios";
 import { baseUrl } from "./baseUrl";
+export interface MyResponseType {
+  statusCode: number;
+  message: string | null;
+  data: any;
+}
 type ErrorHandler = (error: AxiosError) => Promise<void> | void;
-export const client = axios.create({
-  baseURL: baseUrl,
-});
 
-client.interceptors.request.use(
-  (config) => {
-    return config;
-  },
-  (error) => {
-    return error;
-  }
-);
 const handle401Error = async () => {
   window.location.href = "/login";
 };
@@ -34,20 +28,40 @@ const errorHandlers: { [key: number]: ErrorHandler } = {
   401: handle401Error,
   402: handle402Error,
 };
+axios.defaults.withCredentials = true;
+export const client = axios.create({
+  baseURL: baseUrl,
+});
 
-axios.interceptors.response.use(
-  (response) => {
-    return response;
+client.interceptors.request.use(
+  (config) => {
+    return config;
   },
-  async (error) => {
+  (error) => {
+    return error;
+  }
+);
+
+client.interceptors.response.use(
+  (response) => {
+    if ([200.201].includes(response.status)) {
+      alert(response.data.message);
+    }
+    return response.data;
+  },
+  (error: AxiosError) => {
     const status = error.response?.status;
-    const handler = errorHandlers[status];
-    if (axios.isAxiosError(error) && handler) {
+    const handler = status ? errorHandlers[status] : undefined;
+    if (handler) {
       return handler(error);
     } else {
-      alert(error.response.data.message || "서버에 문제가 생겼습니다.");
+      const message =
+        error.response?.data &&
+        typeof error.response.data === "object" &&
+        "message" in error.response.data
+          ? error.response.data.message
+          : "서버에 문제가 생겼습니다.";
+      alert(message);
     }
-
-    return Promise.reject(error);
   }
 );
