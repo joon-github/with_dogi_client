@@ -1,10 +1,10 @@
 "use client";
 import FormComponents from "@/app/shared/components/Form";
+import useOnSubmitLoginForm from "../fetcher/useOnSubmitLoginForm";
 
 export default function LoginForm() {
-  const onSubmit = (data: any) => {
-    console.log("data", data);
-  };
+  const { mutate: onSubmit, isSuccess } = useOnSubmitLoginForm();
+  console.log(isSuccess)
   const emailValidation = {
     required: "계정을 입력해 주세요.",
     pattern: {
@@ -30,7 +30,7 @@ export default function LoginForm() {
           fieldKey="password"
           validation={passwordValidation}
         >
-          <FormComponents.Input />
+          <FormComponents.Input type="password"/>
         </FormComponents.Item>
         <FormComponents.SubmitButton />
       </FormComponents.Form>

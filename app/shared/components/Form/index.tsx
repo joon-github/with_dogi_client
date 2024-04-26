@@ -1,4 +1,3 @@
-"use client";
 import { createContext } from "react";
 import Form from "./Form";
 import Item from "./Item";
