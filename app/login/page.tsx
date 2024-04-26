@@ -1,3 +1,4 @@
+'use client';
 import Logo from "../shared/components/Logo";
 import Loader from "../shared/components/Loader";
 import LoginForm from "./component/LoginForm";
