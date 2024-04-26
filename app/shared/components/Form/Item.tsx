@@ -28,7 +28,7 @@ export default function Item({ label, fieldKey, validation, children }: Props) {
       <div
         className={`flex items-center h-12 ${errorClasses} rounded-md  bg-white`}
       >
-        <label htmlFor={label} className="w-20 pl-3 border-r font-medium">
+        <label htmlFor={label} className="w-20 pl-3 border-r font-medium text-sm">
           {label}
         </label>
         {childWithProps}

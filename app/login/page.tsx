@@ -5,7 +5,7 @@ export default function Login() {
   return (
     <main>
       <div className="flex flex-col justify-center items-center">
-        <Loader />
+        {/* <Loader /> */}
         <Logo href="/" width={200} />
         <div className="w-3/5">
           <LoginForm />
