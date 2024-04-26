@@ -1,0 +1,35 @@
+.loader-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(56, 56, 56, 0.3);
+  z-index: 100;
+}
+.loader-wrapper{
+  display: flex;
+  gap:5px;
+  flex-direction: column;
+  align-items: center;
+}
+.loader {
+  width: 80px;
+  height: 100%;
+  animation: revealOpacity 2s linear infinite;
+}
+.text{
+  animation: revealOpacity 2s linear infinite;
+  font-weight: 600;
+}
+@keyframes revealOpacity {
+  0% {
+    opacity: 0.1;
+  }
+  100% {
+    opacity: 1;
+  }
+}
