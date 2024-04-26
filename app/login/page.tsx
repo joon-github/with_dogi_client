@@ -1,4 +1,4 @@
-import Logo from "../shared/components/Logo";
+import Logo from "../_shared/components/Logo";
 import LoginForm from "./component/LoginForm";
 import Link from "next/link";
 export default function Login() {

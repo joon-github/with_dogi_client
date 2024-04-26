@@ -1,6 +1,6 @@
 "use client";
-import useLoadingMutation from "@/app/shared/\bhooks/useLoadingMutation";
-import FormComponents from "@/app/shared/components/Form";
+import useLoadingMutation from "@/app/_shared/hooks/useLoadingMutation";
+import FormComponents from "@/app/_shared/components/Form";
 import { LuUser2, LuLock } from "react-icons/lu";
 import useOnSubmitLoginForm from "../fetcher/useOnSubmitLoginForm";
 export default function LoginForm() {
@@ -17,6 +17,7 @@ export default function LoginForm() {
   const passwordValidation = {
     required: "비밀번호을 입력해 주세요.",
   };
+
   return (
     <FormComponents>
       <FormComponents.Form onSubmit={onSubmit}>
@@ -36,7 +37,7 @@ export default function LoginForm() {
         >
           <FormComponents.Input type="password" />
         </FormComponents.Item>
-        <FormComponents.SubmitButton />
+        <FormComponents.SubmitButton isLoading={isSuccess} />
       </FormComponents.Form>
     </FormComponents>
   );

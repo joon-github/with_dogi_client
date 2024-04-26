@@ -1,4 +1,4 @@
-import { MyResponseType, client } from "@/app/shared/utils/axiosClient";
+import { MyResponseType, client } from "@/app/_shared/utils/axiosClient";
 import { useQueryClient } from "@tanstack/react-query";
 import { useRouter } from "next/navigation";
 interface LoginForm {
