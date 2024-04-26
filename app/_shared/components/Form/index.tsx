@@ -9,6 +9,7 @@ interface FormContextType {
   register: ReturnType<typeof useForm>["register"];
   handleSubmit: ReturnType<typeof useForm>["handleSubmit"];
   errors: ReturnType<typeof useForm>["formState"]["errors"];
+  watch: ReturnType<typeof useForm>["watch"];
 }
 export const FormContext = createContext<FormContextType | null>(null);
 const FormConteainer = ({ children }: { children: React.ReactNode }) => {
@@ -16,6 +17,7 @@ const FormConteainer = ({ children }: { children: React.ReactNode }) => {
     register,
     handleSubmit,
     formState: { errors },
+    watch,
   } = useForm();
   return (
     <FormContext.Provider
@@ -23,6 +25,7 @@ const FormConteainer = ({ children }: { children: React.ReactNode }) => {
         register,
         handleSubmit,
         errors,
+        watch,
       }}
     >
       {children}

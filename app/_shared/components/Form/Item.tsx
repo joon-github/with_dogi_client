@@ -7,6 +7,7 @@ interface Props {
   validation: any;
   children: React.ReactNode;
   icon?: React.ReactNode;
+  watchField?: string;
 }
 
 export default function Item({
@@ -14,13 +15,21 @@ export default function Item({
   fieldKey,
   validation,
   icon,
+  watchField = "",
   children,
 }: Props) {
   const data = React.useContext(FormContext);
   const register = data?.register;
   const errors = data?.errors;
   // 'register' 함수를 사용하여 필드를 등록하고, 반환된 props를 자식에게 전달
-  const childProps = register ? { ...register(fieldKey, validation) } : {};
+  const childProps = register
+    ? {
+        ...register(
+          fieldKey,
+          watchField !== "" ? validation(data?.watch(watchField)) : validation
+        ),
+      }
+    : {};
 
   const childWithProps = React.Children.map(children, (child) =>
     React.isValidElement(child) ? React.cloneElement(child, childProps) : child

@@ -1,5 +1,5 @@
 interface props {
-  isLoading: boolean;
+  isLoading?: boolean;
 }
 
 export default function SubmitButton({ isLoading }: props) {

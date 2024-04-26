@@ -1,5 +1,5 @@
 import Logo from "../_shared/components/Logo";
-import LoginForm from "./component/LoginForm";
+import LoginForm from "./_components/LoginForm";
 import Link from "next/link";
 export default function Login() {
   return (
