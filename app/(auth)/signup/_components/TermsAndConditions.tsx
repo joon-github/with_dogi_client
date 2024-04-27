@@ -1,3 +1,5 @@
+import AtomCheckbox from "@/app/_shared/components/atom/Checkbox";
+import { Checkbox } from "@nextui-org/react";
 export default function TermsAndConditions() {
   return (
     <label>
@@ -8,10 +10,14 @@ export default function TermsAndConditions() {
         거부하시는 경우에도 서비스 이용이 가능합니다.
       </p>
       <div>
-        <div>
+        <div className="flex">
+          <div>
+            <AtomCheckbox />
+          </div>
           <span>[필수] 만 14세 이상입니다.</span>
         </div>
         <div>
+          <Checkbox />
           <span>[필수] with dogi 이용약관 동의</span>
         </div>
         <div>

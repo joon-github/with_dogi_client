@@ -82,12 +82,12 @@ export default function SignupForm() {
             <div className="px-4 pb-2 w-full">
               <div className="w-full flex items-center">
                 <FormComponents.Input
-                  value={address.zonecode}
+                  defaultValue={address.zonecode}
                   placeholder="우편번호"
                   hidden
                 />
                 <FormComponents.Input
-                  value={address.zonecode}
+                  defaultValue={address.zonecode}
                   placeholder="우편번호"
                   disabled
                 />
@@ -95,7 +95,7 @@ export default function SignupForm() {
               </div>
               <div className="flex flex-col">
                 <FormComponents.Input
-                  value={address.address}
+                  defaultValue={address.address}
                   placeholder="주소"
                   disabled
                 />
