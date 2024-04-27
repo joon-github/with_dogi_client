@@ -2,6 +2,7 @@ import { createContext } from "react";
 import Form from "./Form";
 import Item from "./Item";
 import Input from "./Input";
+import ItemContentsWrapper from "./ItemContentsWrapper";
 import SubmitButton from "./SubmitButton";
 import { useForm } from "react-hook-form";
 
@@ -10,6 +11,7 @@ interface FormContextType {
   handleSubmit: ReturnType<typeof useForm>["handleSubmit"];
   errors: ReturnType<typeof useForm>["formState"]["errors"];
   watch: ReturnType<typeof useForm>["watch"];
+  setValue: ReturnType<typeof useForm>["setValue"];
 }
 export const FormContext = createContext<FormContextType | null>(null);
 const FormConteainer = ({ children }: { children: React.ReactNode }) => {
@@ -18,6 +20,7 @@ const FormConteainer = ({ children }: { children: React.ReactNode }) => {
     handleSubmit,
     formState: { errors },
     watch,
+    setValue,
   } = useForm();
   return (
     <FormContext.Provider
@@ -26,6 +29,7 @@ const FormConteainer = ({ children }: { children: React.ReactNode }) => {
         handleSubmit,
         errors,
         watch,
+        setValue,
       }}
     >
       {children}
@@ -38,6 +42,7 @@ const FormComponents = Object.assign(FormConteainer, {
   Item,
   SubmitButton,
   Input,
+  ItemContentsWrapper,
 });
 
 export default FormComponents;

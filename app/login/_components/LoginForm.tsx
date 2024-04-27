@@ -29,7 +29,7 @@ export default function LoginForm() {
         >
           <FormComponents.Input type="password" />
         </FormComponents.Item>
-        <FormComponents.SubmitButton isLoading={isSuccess} />
+        <FormComponents.SubmitButton text="로그인" isLoading={isSuccess} />
       </FormComponents.Form>
     </FormComponents>
   );
