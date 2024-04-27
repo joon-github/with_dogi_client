@@ -8,9 +8,10 @@ import {
   phoneValidation,
   signupPasswordValidation,
 } from "@/app/_shared/utils/validations";
-import FormComponents from "@/app/_shared/components/Form";
-import AddressSearch from "@/app/_shared/components/AddressSearch";
+import FormComponents from "@/app/_shared/components/molecule/Form";
+import AddressSearch from "@/app/_shared/components/molecule/AddressSearch";
 import { useState } from "react";
+import TermsAndConditions from "./TermsAndConditions";
 
 interface Address {
   address: string;
@@ -71,7 +72,6 @@ export default function SignupForm() {
           >
             <FormComponents.Input />
           </FormComponents.Item>
-
           <FormComponents.Item
             label="주소"
             icon={<LuHome size={22} />}
@@ -106,6 +106,7 @@ export default function SignupForm() {
               </div>
             </div>
           </FormComponents.Item>
+          <TermsAndConditions />
           <FormComponents.SubmitButton text="회원가입" />
         </FormComponents.Form>
       </FormComponents>

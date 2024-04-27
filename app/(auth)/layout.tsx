@@ -1,4 +1,4 @@
-import Logo from "../_shared/components/Logo";
+import Logo from "../_shared/components/molecule/Logo";
 
 export default function AuthLayout({
   children,
