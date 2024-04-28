@@ -1,16 +1,17 @@
-import Atom from "@/app/_shared/components/atom";
-import AtomCheckbox from "../atom/Checkbox";
+import { Checkbox } from "@/app/_shared/components/atom";
 
 interface Props {
   label: string;
+  children?: React.ReactNode;
 }
-export default function AgreementCheckbox({ label }: Props) {
+export default function AgreementCheckbox({ label, children }: Props) {
   return (
-    <div className="flex">
+    <div className="flex justify-between items-center">
       <div>
-        <AtomCheckbox />
+        <Checkbox />
+        <span>{label}</span>
       </div>
-      <span>{label}</span>
+      {children}
     </div>
   );
 }

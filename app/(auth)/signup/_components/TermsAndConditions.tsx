@@ -1,6 +1,6 @@
-import AtomCheckbox from "@/app/_shared/components/atom/Checkbox";
 import AgreementCheckbox from "@/app/_shared/components/molecule/AgreementCheckbox";
-import { Checkbox } from "@nextui-org/react";
+import ModalTriggerButton from "../../../_shared/components/molecule/ModalTriggerButton";
+import { LuChevronRight } from "react-icons/lu";
 export default function TermsAndConditions() {
   return (
     <label>
@@ -12,7 +12,11 @@ export default function TermsAndConditions() {
       </p>
       <div>
         <AgreementCheckbox label="[필수] 만 14세 이상입니다." />
-        <AgreementCheckbox label="[필수] with dogi 이용약관 동의" />
+        <AgreementCheckbox label="[필수] with dogi 이용약관 동의">
+          <ModalTriggerButton title="with dogi 약관 동의" contents="test">
+            <LuChevronRight />
+          </ModalTriggerButton>
+        </AgreementCheckbox>
         <AgreementCheckbox label="[필수] 개인정보 수집 및 이용 동의" />
         <AgreementCheckbox label="[필수] 개인정보 제3자 제공 동의" />
       </div>

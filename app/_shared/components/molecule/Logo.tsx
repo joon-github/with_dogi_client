@@ -13,7 +13,7 @@ export default function Logo({ href = "/", width = 200 }: Props) {
         src="/logo.png"
         alt="Vercel Logo"
         width={width}
-        height={1}
+        height={73}
         priority
       />
     </Link>
