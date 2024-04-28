@@ -4,6 +4,7 @@ import "./globals.css";
 import ReactQueryProcider from "./_providers/ReactQueryProvider";
 import Loader from "./_shared/components/molecule/Loader";
 import { NextUIProvider } from "@nextui-org/react";
+import Footer from "./_shared/components/Footer";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -22,6 +23,7 @@ export default function RootLayout({
         <body>
           <NextUIProvider>
             <div className={inter.className}>{children}</div>
+            <Footer />
           </NextUIProvider>
         </body>
         <Loader />

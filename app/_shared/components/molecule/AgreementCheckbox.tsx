@@ -1,7 +1,7 @@
 import { Checkbox } from "@/app/_shared/components/atom";
 
 interface Props {
-  label: string;
+  label: string | React.ReactNode;
   children?: React.ReactNode;
 }
 export default function AgreementCheckbox({ label, children }: Props) {

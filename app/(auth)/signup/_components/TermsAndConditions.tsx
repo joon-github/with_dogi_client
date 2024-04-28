@@ -3,16 +3,19 @@ import ModalTriggerButton from "../../../_shared/components/molecule/ModalTrigge
 import { LuChevronRight } from "react-icons/lu";
 import Agreement from "./TermsAndConditions/Agreement";
 import Privacy from "./TermsAndConditions/Privacy";
+import ThirdPartyConsent from "./TermsAndConditions/ThirdPartyConsent";
 export default function TermsAndConditions() {
   return (
-    <label>
-      <strong>모두 확인하였으며 동의합니다.</strong>
-      <p>
+    <label className="flex flex-col gap-2 mb-4">
+      <AgreementCheckbox
+        label={<strong>모두 확인하였으며 동의합니다.</strong>}
+      />
+      <p className="text-sm text-gray-500">
         전체 동의에는 필수 및 선택 정보에 대한 동의가 포함되어 있으며,
         개별적으로 동의를 선택 하실 수 있습니다. 선택 항목에 대한 동의를
         거부하시는 경우에도 서비스 이용이 가능합니다.
       </p>
-      <div>
+      <div className="flex flex-col gap-2">
         <AgreementCheckbox label="[필수] 만 14세 이상입니다." />
         <AgreementCheckbox label="[필수] with dogi 이용약관 동의">
           <ModalTriggerButton
@@ -30,7 +33,14 @@ export default function TermsAndConditions() {
             <LuChevronRight />
           </ModalTriggerButton>
         </AgreementCheckbox>
-        <AgreementCheckbox label="[필수] 개인정보 제3자 제공 동의" />
+        <AgreementCheckbox label="[필수] 개인정보 제3자 제공 동의">
+          <ModalTriggerButton
+            title="개인정보 제3자 제공 동의"
+            contents={<ThirdPartyConsent />}
+          >
+            <LuChevronRight />
+          </ModalTriggerButton>
+        </AgreementCheckbox>
       </div>
     </label>
   );
