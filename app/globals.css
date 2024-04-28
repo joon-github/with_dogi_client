@@ -14,5 +14,10 @@ body {
 
 a {
   text-decoration: none;
-  color: rgb(40, 75, 199);
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none; /* Hide spin buttons for WebKit browsers */
+  appearance: none; /* Hide spin buttons for other browsers */
 }

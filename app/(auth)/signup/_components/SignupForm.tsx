@@ -71,7 +71,7 @@ export default function SignupForm() {
             fieldKey="phone"
             validation={phoneValidation}
           >
-            <FormComponents.Input maxLength={15} />
+            <FormComponents.Input type="number" maxLength={15} />
           </FormComponents.Item>
           <FormComponents.Item
             label="주소"

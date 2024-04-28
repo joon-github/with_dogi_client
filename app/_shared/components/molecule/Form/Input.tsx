@@ -1,5 +1,4 @@
 import React from "react";
-
 // 타입을 HTMLInputElement로 명확히 지정합니다.
 const Input = React.forwardRef<
   HTMLInputElement,
