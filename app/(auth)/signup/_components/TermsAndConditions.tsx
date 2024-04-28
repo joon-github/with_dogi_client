@@ -1,6 +1,8 @@
 import AgreementCheckbox from "@/app/_shared/components/molecule/AgreementCheckbox";
 import ModalTriggerButton from "../../../_shared/components/molecule/ModalTriggerButton";
 import { LuChevronRight } from "react-icons/lu";
+import Agreement from "./TermsAndConditions/Agreement";
+import Privacy from "./TermsAndConditions/Privacy";
 export default function TermsAndConditions() {
   return (
     <label>
@@ -13,11 +15,21 @@ export default function TermsAndConditions() {
       <div>
         <AgreementCheckbox label="[필수] 만 14세 이상입니다." />
         <AgreementCheckbox label="[필수] with dogi 이용약관 동의">
-          <ModalTriggerButton title="with dogi 약관 동의" contents="test">
+          <ModalTriggerButton
+            title="with dogi 약관 동의"
+            contents={<Agreement />}
+          >
             <LuChevronRight />
           </ModalTriggerButton>
         </AgreementCheckbox>
-        <AgreementCheckbox label="[필수] 개인정보 수집 및 이용 동의" />
+        <AgreementCheckbox label="[필수] 개인정보 수집 및 이용 동의">
+          <ModalTriggerButton
+            title="개인정보 수집 및 이용 동의"
+            contents={<Privacy />}
+          >
+            <LuChevronRight />
+          </ModalTriggerButton>
+        </AgreementCheckbox>
         <AgreementCheckbox label="[필수] 개인정보 제3자 제공 동의" />
       </div>
     </label>

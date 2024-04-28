@@ -4,7 +4,7 @@ import { Modal } from "@/app/_shared/components/atom";
 
 interface Props {
   title: string;
-  contents: string;
+  contents: string | React.ReactNode;
   children?: React.ReactNode;
 }
 

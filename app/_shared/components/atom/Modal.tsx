@@ -11,7 +11,11 @@ interface Props {
 }
 
 function AtomModalBody({ children }: Props) {
-  return <ModalBody>{children}</ModalBody>;
+  return (
+    <ModalBody className="max-h-[80vh] overflow-auto pb-4">
+      {children}
+    </ModalBody>
+  );
 }
 
 function AtomModalHeader({ ...props }) {
