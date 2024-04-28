@@ -4,7 +4,9 @@
 
 :root {
 }
-main,
+main {
+  height: fit-content;
+}
 body {
   background: #fff;
   height: 100vh;

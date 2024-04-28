@@ -6,13 +6,15 @@ interface Props {
   children?: React.ReactNode;
   checked?: boolean;
   onChange?: (isSelected: boolean) => void;
+  onChangeValue?: (value: string) => void;
 }
 export default function AgreementCheckbox({
   value,
   label,
   children,
-  checked,
   onChange,
+  checked,
+  onChangeValue,
 }: Props) {
   return (
     <div className="flex justify-between items-center">
@@ -20,8 +22,15 @@ export default function AgreementCheckbox({
         <Checkbox
           value={value}
           isSelected={checked}
+          onChange={(e: any) => {
+            if (onChangeValue) {
+              onChangeValue(e.target.value);
+            }
+          }}
           onValueChange={(isSelected: boolean) => {
-            onChange(isSelected);
+            if (onChange) {
+              onChange(isSelected);
+            }
           }}
         />
         <span>{label}</span>

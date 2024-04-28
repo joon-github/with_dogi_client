@@ -7,28 +7,18 @@ import Agreement from "./TermsAndConditions/Agreement";
 import Privacy from "./TermsAndConditions/Privacy";
 import ThirdPartyConsent from "./TermsAndConditions/ThirdPartyConsent";
 import { CheckboxGroup } from "@nextui-org/react";
+import useAgreementContents from "../_fetcher/useTermsAndConditions";
 export default function TermsAndConditions() {
-  const [values, setValues] = useState<string[]>([]);
-  const [isAgeOver14, setIsAgeOver14] = useState(false);
-  const [isAgreePrivacy, setIsAgreePrivacy] = useState(false);
-  const [isAgreeThirdParty, setIsAgreeThirdParty] = useState(false);
-
-  const onChangeAllCheck = (checked: boolean) => {
-    setValues(
-      checked
-        ? ["isAgeOver14", "isAgreePrivacy", "isAgreeThirdParty", "thirdparty"]
-        : []
-    );
-  };
+  const { values, onChangeAllCheck, onChangeValue } = useAgreementContents();
   return (
     <label className="flex flex-col gap-2 mb-4">
       <AgreementCheckbox
         label={<strong>모두 확인하였으며 동의합니다.</strong>}
+        checked={values.length === 4}
         onChange={onChangeAllCheck}
       />
       <CheckboxGroup
         errorMessage="필수 항목에 모두 동의해주세요"
-        description="Test"
         value={values}
       >
         <p className="text-sm text-gray-500">
@@ -39,13 +29,13 @@ export default function TermsAndConditions() {
         <div className="flex flex-col gap-2">
           <AgreementCheckbox
             label="[필수] 만 14세 이상입니다."
-            value="isAgeOver14"
-            onChange={(checked) => setIsAgeOver14(checked)}
+            value="ageOver14"
+            onChangeValue={onChangeValue}
           />
           <AgreementCheckbox
             label="[필수] with dogi 이용약관 동의"
             value="agreement"
-            onChange={(checked) => setIsAgeOver14(checked)}
+            onChangeValue={onChangeValue}
           >
             <ModalTriggerButton
               title="with dogi 약관 동의"
@@ -57,7 +47,7 @@ export default function TermsAndConditions() {
           <AgreementCheckbox
             label="[필수] 개인정보 수집 및 이용 동의"
             value="privacy"
-            onChange={(checked) => setIsAgreePrivacy(checked)}
+            onChangeValue={onChangeValue}
           >
             <ModalTriggerButton
               title="개인정보 수집 및 이용 동의"
@@ -69,7 +59,7 @@ export default function TermsAndConditions() {
           <AgreementCheckbox
             label="[필수] 개인정보 제3자 제공 동의"
             value="thirdparty"
-            onChange={(checked) => setIsAgreeThirdParty(checked)}
+            onChangeValue={onChangeValue}
           >
             <ModalTriggerButton
               title="개인정보 제3자 제공 동의"

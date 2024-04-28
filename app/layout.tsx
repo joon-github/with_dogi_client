@@ -22,7 +22,9 @@ export default function RootLayout({
       <ReactQueryProcider>
         <body>
           <NextUIProvider>
-            <div className={inter.className}>{children}</div>
+            <div id="" className={inter.className}>
+              {children}
+            </div>
             <Footer />
           </NextUIProvider>
         </body>
