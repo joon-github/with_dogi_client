@@ -19,7 +19,7 @@ export default function LoginForm() {
           fieldKey="email"
           validation={emailValidation}
         >
-          <FormComponents.Input />
+          <FormComponents.Input maxLength={100} />
         </FormComponents.Item>
         <FormComponents.Item
           label="비밀번호"
@@ -27,7 +27,7 @@ export default function LoginForm() {
           icon={<LuLock size={22} />}
           validation={loginPasswordValidation}
         >
-          <FormComponents.Input type="password" />
+          <FormComponents.Input type="password" maxLength={100} />
         </FormComponents.Item>
         <FormComponents.SubmitButton text="로그인" isLoading={isSuccess} />
       </FormComponents.Form>

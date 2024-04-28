@@ -44,11 +44,11 @@ export const nameValidation = {
 export const phoneValidation = {
   required: "연락처를 입력해 주세요.",
   pattern: {
-    value: /^01([0|1|6|7|8|9]?)-?([0-9]{3,4})-?([0-9]{4})$/,
+    value: /^\d{11}$/,
     message: "연락처를 정확하게 입력해 주세요.",
   },
 };
 
 export const addressValidation = {
-  required: "주소를 입력해 주세요.",
+  required: "주소를 전부 입력해 주세요.",
 };

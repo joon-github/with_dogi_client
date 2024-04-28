@@ -5,7 +5,7 @@
 :root {
 }
 main {
-  height: fit-content;
+  flex: 1;
 }
 body {
   background: #fff;

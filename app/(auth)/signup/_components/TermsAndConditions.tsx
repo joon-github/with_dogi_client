@@ -1,5 +1,4 @@
 "use client";
-import { useState } from "react";
 import AgreementCheckbox from "@/app/_shared/components/molecule/AgreementCheckbox";
 import ModalTriggerButton from "../../../_shared/components/molecule/ModalTriggerButton";
 import { LuChevronRight } from "react-icons/lu";
@@ -16,6 +15,7 @@ export default function TermsAndConditions() {
         label={<strong>모두 확인하였으며 동의합니다.</strong>}
         checked={values.length === 4}
         onChange={onChangeAllCheck}
+        isRequired
       />
       <CheckboxGroup
         errorMessage="필수 항목에 모두 동의해주세요"

@@ -7,6 +7,7 @@ interface Props {
   checked?: boolean;
   onChange?: (isSelected: boolean) => void;
   onChangeValue?: (value: string) => void;
+  isRequired?: boolean;
 }
 export default function AgreementCheckbox({
   value,
@@ -15,6 +16,7 @@ export default function AgreementCheckbox({
   onChange,
   checked,
   onChangeValue,
+  isRequired,
 }: Props) {
   return (
     <div className="flex justify-between items-center">
@@ -22,6 +24,7 @@ export default function AgreementCheckbox({
         <Checkbox
           value={value}
           isSelected={checked}
+          isRequired={isRequired}
           onChange={(e: any) => {
             if (onChangeValue) {
               onChangeValue(e.target.value);
