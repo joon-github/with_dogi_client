@@ -1,18 +1,23 @@
 "use client";
-import Logo from "./molecule/Logo";
-import IconText from "./molecule/IconText";
+import Logo from "../molecule/Logo";
+import IconText from "../molecule/IconText";
 import { CiShoppingCart } from "react-icons/ci";
 import { SlUser } from "react-icons/sl";
-import SearchInput from "./molecule/SearchInput";
+import SearchInput from "../molecule/SearchInput";
 import Link from "next/link";
-import useIsLogin from "../entity/useIsLogin";
+import useIsLogin from "../../entity/useIsLogin";
+import useCategory from "../../entity/category/useCategory";
 
-export default function Header() {
+export default function HeaderView() {
   const isLogin = useIsLogin();
+  const { data } = useCategory("product");
+  console.log("data", data);
   return (
     <header className="py-4 px-6">
-      <div className="flex items-center flex-wrap gap-10">
-        <Logo href="/" width={200} />
+      <div className="flex items-center gap-10">
+        <div className="min-w-[200px]">
+          <Logo href="/" width={200} />
+        </div>
         <div className="flex flex-1 items-center gap-10">
           <SearchInput />
           <div className="flex gap-4">
