@@ -1,5 +1,6 @@
 import PrefetchHydration from "../_shared/components/PrefetchHydration/PrefetchHydration";
-import Logo from "../_shared/components/molecule/Logo";
+import Header from "./_components/Header";
+import SideBar from "./_components/SideBar";
 
 export default function myPageLayout({
   children,
@@ -8,8 +9,13 @@ export default function myPageLayout({
 }>) {
   return (
     <PrefetchHydration queries={[]}>
-      <Logo href="/products" width={200} />
-      {children}
+      <div className="h-full">
+        <Header />
+        <div className="flex h-full">
+          <SideBar />
+          {children}
+        </div>
+      </div>
     </PrefetchHydration>
   );
 }
