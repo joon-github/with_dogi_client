@@ -12,7 +12,7 @@ export default function Categories() {
           className="flex flex-col items-center relative font-bold cursor-pointer group"
         >
           <Link href={`#`}>{category.categoryName}</Link>
-          <div className="absolute top-full bg-white shadow-lg rounded-lg border p-2 group-hover:block hidden transition-all ease-out duration-300">
+          <div className="absolute top-full bg-white shadow-lg rounded-lg border p-2 group-hover:block hidden">
             {category.children &&
               category.children.length > 0 &&
               category.children.map((child) => (

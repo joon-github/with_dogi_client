@@ -10,7 +10,7 @@ export default function UserNavigation() {
   const isLogin = useIsLogin();
   return (
     <Skeleton isLoaded={isLogin !== null}>
-      <div className="w-[280px] flex gap-4">
+      <div className="w-[280px] flex gap-6">
         <IconText icon={<CiShoppingCart size={40} />}>
           <Link href="/cart">
             <div>장바구니</div>
@@ -20,7 +20,7 @@ export default function UserNavigation() {
           {isLogin ? (
             <div>
               <Link href="/mypage">
-                <div>my page</div>
+                <div>내 정보</div>
               </Link>
             </div>
           ) : (
