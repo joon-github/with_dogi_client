@@ -6,7 +6,7 @@ export default function Categories() {
   const { data: categories } = useCategory("product");
   return (
     <ul className="flex flex-wrap items-center gap-4 justify-around min-w-[1000px] border-y border-slate-400 py-2">
-      {categories?.map((category) => (
+      {categories?.data?.map((category) => (
         <li
           key={category.categoryId}
           className="flex flex-col items-center relative font-bold cursor-pointer group"

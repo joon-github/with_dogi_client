@@ -1,15 +1,15 @@
 "use client";
-import useIsLogin from "../../entity/useIsLogin";
 import Link from "next/link";
 import IconText from "../molecule/IconText";
 import { SlUser } from "react-icons/sl";
 import { CiShoppingCart } from "react-icons/ci";
 import { Skeleton } from "../atom";
+import { useLoginStatus } from "@/app/service/auth/useAuthService";
 
 export default function UserNavigation() {
-  const isLogin = useIsLogin();
+  const { data: loginStatus } = useLoginStatus();
   return (
-    <Skeleton isLoaded={isLogin !== null}>
+    <Skeleton isLoaded={loginStatus !== undefined}>
       <div className="w-[280px] flex gap-6">
         <IconText icon={<CiShoppingCart size={40} />}>
           <Link href="/cart">
@@ -17,7 +17,7 @@ export default function UserNavigation() {
           </Link>
         </IconText>
         <IconText icon={<SlUser size={28} />}>
-          {isLogin ? (
+          {loginStatus?.data ? (
             <div>
               <Link href="/mypage">
                 <div>내 정보</div>

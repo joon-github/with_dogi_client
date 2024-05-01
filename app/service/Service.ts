@@ -8,10 +8,6 @@ interface HTTPInstance {
   patch<T>(url: string, data?: unknown, config?: RequestInit): Promise<T>;
 }
 
-interface ApiResponse<T> {
-  data: T;
-}
-
 class Service {
   public http: HTTPInstance;
 
@@ -63,8 +59,9 @@ class Service {
         throw new Error("Network response was not ok");
       }
 
-      const responseData: ApiResponse<T> = await response.json();
-      return responseData.data;
+      const responseData: T = await response.json();
+      console.log(responseData);
+      return responseData;
     } catch (error) {
       console.error("Error:", error);
       throw error;
