@@ -19,7 +19,7 @@ export default function UserNavigation() {
         <IconText icon={<SlUser size={28} />}>
           {loginStatus?.data ? (
             <div>
-              <Link href="/mypage">
+              <Link href="/user-modify">
                 <div>내 정보</div>
               </Link>
             </div>

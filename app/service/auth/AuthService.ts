@@ -1,17 +1,21 @@
 import Service from "@/app/service/Service";
 import { MyInfo } from "./auth.entitiy";
-import { ResponseType } from "../ResponsType";
+
+interface LoginRequest {
+  email: string;
+  password: string;
+}
 class AuthService extends Service {
   getMyInfo() {
-    return this.http.get<ResponseType<MyInfo>>(`/auth/myInfo`);
+    return this.http.get<MyInfo>(`/auth/myInfo`);
   }
 
   getLoginStatus() {
-    return this.http.get<ResponseType<boolean>>(`/auth/loginCheck`);
+    return this.http.get<boolean>(`/auth/loginCheck`);
   }
 
   login(email: string, password: string) {
-    return this.http.post<ResponseType<null>>("/auth/login", {
+    return this.http.post<LoginRequest, null>("/auth/login", {
       email,
       password,
     });
