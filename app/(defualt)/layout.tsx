@@ -1,4 +1,4 @@
-import queryOptions from "@/service/category/queryOptions";
+import queryOptions from "@/app/service/category/queryOptions";
 import Header from "../_shared/components/Header";
 import PrefetchHydration from "../_shared/components/PrefetchHydration/PrefetchHydration";
 

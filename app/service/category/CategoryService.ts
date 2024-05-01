@@ -1,4 +1,4 @@
-import Service from "@/service/Service";
+import Service from "@/app/service/Service";
 import { Category } from "./Category.entity";
 
 class CategoryService extends Service {

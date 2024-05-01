@@ -1,6 +1,6 @@
 "use client";
-import { Category } from "@/service/category/Category.entity";
-import { useCategory } from "@/service/category/useCategoryService";
+import { Category } from "@/app/service/category/Category.entity";
+import { useCategory } from "@/app/service/category/useCategoryService";
 export default function Categories() {
   const { data: categoriesRes } = useCategory("product");
   return (
