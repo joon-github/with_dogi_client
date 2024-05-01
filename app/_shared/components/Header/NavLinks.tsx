@@ -6,7 +6,6 @@ export default function NavLinks() {
   const segments = useSelectedLayoutSegments();
   // 현재 경로에 따라 굵은 글씨 스타일 적용
   const getLinkStyle = (path: string) => {
-    console.log(segments, path);
     return segments.includes(path) ? "font-bold" : "";
   };
 

@@ -8,7 +8,7 @@ export default function Header() {
     <header className="flex flex-col gap-2 py-4">
       <div className="flex items-center gap-10 pl-6">
         <div className="min-w-[200px]">
-          <Logo href="/" width={200} />
+          <Logo href="/products" width={200} />
         </div>
         <NavLinks />
         <div className="flex flex-1 items-center gap-10">
