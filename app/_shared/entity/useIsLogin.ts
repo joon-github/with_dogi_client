@@ -3,12 +3,15 @@ import { useQuery } from "@tanstack/react-query";
 import { client } from "../utils/axiosClient";
 
 export default function useIsLogin() {
-  const { data } = useQuery({
+  const { data, isSuccess } = useQuery({
     queryKey: ["isLogin"],
     queryFn: async () => {
       return await client.get("/auth/loginCheck");
     },
     staleTime: Infinity,
   });
-  return data?.data || false;
+  if (!isSuccess) {
+    return null;
+  }
+  return data?.data;
 }
