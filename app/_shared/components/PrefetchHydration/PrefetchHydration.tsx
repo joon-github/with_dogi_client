@@ -5,23 +5,32 @@ import { cache, type PropsWithChildren } from "react";
 
 import HydrateOnClient from "./HydrateOnClient";
 
-type Props = {
+type QueryItem = {
   queryKey: QueryKey;
   queryFn: QueryFunction;
 };
 
+type Props = {
+  queries: QueryItem[];
+};
+
 const PrefetchHydration = async ({
-  queryKey,
-  queryFn,
+  queries,
   children,
 }: PropsWithChildren<Props>) => {
   const getQueryClient = cache(() => new QueryClient());
   const queryClient = getQueryClient();
 
-  await queryClient.prefetchQuery({
-    queryKey,
-    queryFn,
-  });
+  // 여러 쿼리를 동시에 prefetch
+  await Promise.all(
+    queries.map(({ queryKey, queryFn }) =>
+      queryClient.prefetchQuery({
+        queryKey,
+        queryFn,
+      })
+    )
+  );
+
   const dehydratedState = dehydrate(queryClient);
 
   return <HydrateOnClient state={dehydratedState}>{children}</HydrateOnClient>;
