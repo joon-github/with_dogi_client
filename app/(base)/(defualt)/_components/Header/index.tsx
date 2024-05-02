@@ -1,5 +1,5 @@
-import Logo from "../../../../_components/molecule/Logo";
-import SearchInput from "../../../../_components/molecule/SearchInput";
+import Logo from "../../../../_components/block/Logo";
+import SearchInput from "../../../../_components/block/SearchInput";
 import UserNavigation from "./UserNavigation";
 import Categories from "./Categories";
 import NavLinks from "./NavLinks";

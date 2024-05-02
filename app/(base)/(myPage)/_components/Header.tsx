@@ -1,4 +1,4 @@
-import Logo from "@/app/_components/molecule/Logo";
+import Logo from "@/app/_components/block/Logo";
 
 export default function Header() {
   return (
