@@ -14,6 +14,7 @@ function ReactQueryProcider({ children }: React.PropsWithChildren) {
           refetchOnWindowFocus: false,
           retry: 2,
           staleTime: 5 * 60 * 1000,
+          gcTime: 2 * 1000,
         },
       },
       queryCache: new QueryCache({
