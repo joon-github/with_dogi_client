@@ -1,14 +1,9 @@
 "use client";
-import { useSelectedLayoutSegments } from "next/navigation";
 import Link from "next/link";
+import useGetLinkStyle from "@/app/_utils/getLinkStyle";
 
 export default function NavLinks() {
-  const segments = useSelectedLayoutSegments();
-  // 현재 경로에 따라 굵은 글씨 스타일 적용
-  const getLinkStyle = (path: string) => {
-    return segments.includes(path) ? "font-bold" : "";
-  };
-
+  const getLinkStyle = useGetLinkStyle();
   return (
     <div className="flex gap-6 text-base text-nowrap">
       <Link href="/products">

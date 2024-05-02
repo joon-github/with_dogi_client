@@ -2,7 +2,7 @@ import PrefetchHydration from "../_components/PrefetchHydration";
 import Header from "./_components/Header";
 import SideBar from "./_components/SideBar";
 
-export default function myPageLayout({
+export default function MyPageLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
