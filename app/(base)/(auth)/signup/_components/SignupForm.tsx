@@ -8,8 +8,8 @@ import {
   phoneValidation,
   signupPasswordValidation,
 } from "@/app/_shared/utils/validations";
-import FormComponents from "@/app/_shared/components/molecule/Form";
-import AddressSearch from "@/app/_shared/components/molecule/AddressSearch";
+import FormComponents from "@/app/_components/molecule/Form";
+import AddressSearch from "@/app/_components/molecule/AddressSearch";
 import { useState } from "react";
 import TermsAndConditions from "./TermsAndConditions";
 import useOnSubmitSignupForm from "../_fetcher/useOnSubmitSignupForm";

@@ -1,4 +1,4 @@
-import { Checkbox } from "@/app/_shared/components/atom";
+import { Checkbox } from "@/app/_components/atom";
 
 interface Props {
   value?: string;

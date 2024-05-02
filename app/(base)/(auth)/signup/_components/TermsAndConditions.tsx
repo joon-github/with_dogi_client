@@ -1,6 +1,6 @@
 "use client";
-import AgreementCheckbox from "@/app/_shared/components/molecule/AgreementCheckbox";
-import ModalTriggerButton from "../../../../_shared/components/molecule/ModalTriggerButton";
+import AgreementCheckbox from "@/app/_components/molecule/AgreementCheckbox";
+import ModalTriggerButton from "../../../../_components/molecule/ModalTriggerButton";
 import { LuChevronRight } from "react-icons/lu";
 import Agreement from "./TermsAndConditions/Agreement";
 import Privacy from "./TermsAndConditions/Privacy";

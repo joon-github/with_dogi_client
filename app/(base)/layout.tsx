@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import ReactQueryProcider from "../_providers/ReactQueryProvider";
-import Loader from "../_shared/components/molecule/Loader";
+import Loader from "../_components/molecule/Loader";
 import { NextUIProvider } from "@nextui-org/react";
-import Footer from "../_shared/components/molecule/Footer";
+import Footer from "../_components/molecule/Footer";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {

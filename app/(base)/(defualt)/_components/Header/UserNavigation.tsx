@@ -1,9 +1,9 @@
 "use client";
 import Link from "next/link";
-import IconText from "../../../../_shared/components/molecule/IconText";
+import IconText from "../../../../_components/molecule/IconText";
 import { SlUser } from "react-icons/sl";
 import { CiShoppingCart } from "react-icons/ci";
-import { Skeleton } from "../../../../_shared/components/atom";
+import { Skeleton } from "../../../../_components/atom";
 import { useLoginStatus } from "@/app/_service/auth/useAuthService";
 
 export default function UserNavigation() {

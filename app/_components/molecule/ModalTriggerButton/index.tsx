@@ -1,6 +1,6 @@
 import { useDisclosure } from "@nextui-org/react";
 
-import { Modal } from "@/app/_shared/components/atom";
+import { Modal } from "@/app/_components/atom";
 
 interface Props {
   title: string;
