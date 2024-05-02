@@ -6,30 +6,22 @@ import { QueryClientProvider, QueryClient, QueryCache } from "@tanstack/react-qu
 // import { ReactQueryStreamedHydration } from "@tanstack/react-query-next-experimental";
 
 function ReactQueryProcider({ children }: React.PropsWithChildren) {
-  // const [client] = React.useState(
-  //   new QueryClient({
-  //     defaultOptions: {
-  //       queries: {
-  //         refetchOnWindowFocus: false,
-  //         retry: 2,
-  //         staleTime: 5 * 60 * 1000,
-  //       },
-  //     },
-  //   })
-  // );
-  const queryClient = new QueryClient({
-    defaultOptions: {
-      queries: {
-        refetchOnWindowFocus: false,
-        retry: 2,
-        staleTime: 5 * 60 * 1000,
+
+  const [queryClient] = React.useState(
+    new QueryClient({
+      defaultOptions: {
+        queries: {
+          refetchOnWindowFocus: false,
+          retry: 2,
+          staleTime: 5 * 60 * 1000,
+        },
       },
-    },
-    queryCache: new QueryCache({
-      onError: (error) =>
-        console.log(error)
-    }),
-  })
+      queryCache: new QueryCache({
+        onError: (error) =>
+          console.log(error)
+      }),
+    })
+  )
   return (
     <QueryClientProvider client={queryClient}>
       {children}
