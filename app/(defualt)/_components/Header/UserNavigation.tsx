@@ -9,7 +9,7 @@ import { useLoginStatus } from "@/app/_service/auth/useAuthService";
 export default function UserNavigation() {
   const { data: loginStatus } = useLoginStatus();
   return (
-    <Skeleton isLoaded={loginStatus !== undefined}>
+    <Skeleton isLoaded={loginStatus !== undefined} className="w-fit">
       <div className="w-[280px] flex gap-6">
         <IconText icon={<CiShoppingCart size={40} />}>
           <Link href="/cart">

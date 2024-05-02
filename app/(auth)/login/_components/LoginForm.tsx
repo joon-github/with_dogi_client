@@ -1,12 +1,12 @@
 "use client";
-import useLoadingMutation from "@/app/_shared/hooks/useLoadingMutation";
+import useLoadingMutation from "@/app/_hooks/useLoadingMutation";
 import FormComponents from "@/app/_components/block/Form";
 import { LuUser2, LuLock } from "react-icons/lu";
 import useOnSubmitLoginForm from "../_fetcher/useOnSubmitLoginForm";
 import {
   emailValidation,
   loginPasswordValidation,
-} from "@/app/_shared/utils/validations";
+} from "@/app/_utils/validations";
 export default function LoginForm() {
   const submitLoginForm = useOnSubmitLoginForm();
   const { mutate: onSubmit, isSuccess } = useLoadingMutation(submitLoginForm);

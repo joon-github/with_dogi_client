@@ -3,13 +3,13 @@ import React, { useEffect } from "react";
 import { FormContext } from ".";
 
 interface Props {
-  label: string | React.ReactNode;
+  label?: string | React.ReactNode;
   fieldKey: string;
   validation?: any;
   children: React.ReactNode;
   icon?: React.ReactNode;
   watchField?: string;
-  value?: string | null;
+  value?: string | number | null;
 }
 
 export default function Item({

@@ -26,12 +26,23 @@ class AuthService extends Service {
   login(data: LoginRequest) {
     return this.http.post<LoginRequest, null>("/auth/login", {
       email: data.email,
-      password:data.password,
+      password: data.password,
     });
   }
 
   signup(data: SignupRequest) {
     return this.http.post<SignupRequest, null>("/auth/signup", {
+      email: data.email,
+      password: data.password,
+      passwordConfirm: data.passwordConfirm,
+      name: data.name,
+      phone: data.phone,
+      address: data.address,
+    });
+  }
+
+  modify(data: SignupRequest) {
+    return this.http.patch<SignupRequest, null>("/auth/member", {
       email: data.email,
       password: data.password,
       passwordConfirm: data.passwordConfirm,

@@ -64,7 +64,9 @@ class Service {
       );
       const responseData: ResponseType<null> =
         await refreshTokenResponse.json();
-      console.log("responseData", responseData);
+      if (responseData.statusCode === 403) {
+        throw new Error(JSON.stringify(responseData));
+      }
       if (responseData.statusCode === 200) {
         return retryFetch(); // 토큰 갱신 성공 후 요청 재시도
       } else {
@@ -111,6 +113,9 @@ class Service {
           this.refreshToken(() =>
             this.request<R, T>(method, url, config, body)
           ),
+        403: () => {
+          throw new Error(JSON.stringify(responseData));
+        },
       };
 
       if (statusHandlers[responseData.statusCode]) {

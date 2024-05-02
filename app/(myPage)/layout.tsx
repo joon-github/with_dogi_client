@@ -13,7 +13,7 @@ export default function myPageLayout({
         <Header />
         <div className="flex h-full">
           <SideBar />
-          {children}
+          <div className="py-8 px-[100px] w-full ">{children}</div>
         </div>
       </div>
     </PrefetchHydration>
