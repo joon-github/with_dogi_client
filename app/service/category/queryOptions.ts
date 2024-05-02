@@ -8,7 +8,6 @@ const queryOptions = {
   all: (type: string) => ({
     queryKey: queryKeys.all(type),
     queryFn: () => CategoryService.getCategories(type),
-    initialData: {data :[{ categoryId: 1, categoryName: "서버에러 입니다...", children: []}]}
   }),
 };
 

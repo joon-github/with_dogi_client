@@ -10,7 +10,7 @@ interface Props<R>{
   queryFn: () => Promise<ResponseType<R>>;
   initialData?: any;
 }
-export default function useQueryWithErrorLogging<R>(query: Props<R>): R {
+export default function useQueryWithErrorLogging<R>(query: Props<R>): ResponseType<R> {
   const { queryKey, queryFn } = query;
   const result = useQuery({
     queryKey,
@@ -18,12 +18,5 @@ export default function useQueryWithErrorLogging<R>(query: Props<R>): R {
     retry: false,
     initialData: query.initialData,
   });
-  useEffect(() => {
-    if (result.error) {
-      console.log(result.error);
-    }
-  }
-    , [result.error]);
-  console.log(result.data.data)
-  return result.data.data;
+  return result?.data;
 }

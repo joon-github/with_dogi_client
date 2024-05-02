@@ -111,14 +111,6 @@ class Service {
           this.refreshToken(() =>
             this.request<R, T>(method, url, config, body)
           ),
-        403: () => {
-          const res = {
-            statusCode: 403,
-            message: "세션이 만료되었습니다.",
-          };
-          throw new Error(JSON.stringify(res));
-        },
-        500: () => Promise.reject(new Error("Server error")),
       };
 
       if (statusHandlers[responseData.statusCode]) {
