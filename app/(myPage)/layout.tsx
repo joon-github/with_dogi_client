@@ -1,4 +1,4 @@
-import PrefetchHydration from "../../_components/PrefetchHydration";
+import PrefetchHydration from "../_components/PrefetchHydration";
 import Header from "./_components/Header";
 import SideBar from "./_components/SideBar";
 

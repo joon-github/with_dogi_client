@@ -1,4 +1,4 @@
-import Logo from "../../_components/block/Logo";
+import Logo from "../_components/block/Logo";
 
 export default function AuthLayout({
   children,

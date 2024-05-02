@@ -1,6 +1,6 @@
 import queryOptions from "@/app/_service/category/queryOptions";
 import Header from "./_components/Header";
-import PrefetchHydration from "../../_components/PrefetchHydration";
+import PrefetchHydration from "../_components/PrefetchHydration";
 
 export default function defualtLayout({
   children,
