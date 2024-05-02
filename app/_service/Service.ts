@@ -1,4 +1,4 @@
-interface ResponseType<R> {
+export interface ResponseType<R> {
   statusCode: number;
   message: string | null;
   data: R;
@@ -113,8 +113,11 @@ class Service {
           this.refreshToken(() =>
             this.request<R, T>(method, url, config, body)
           ),
+        400: () => {
+          throw responseData
+        },
         403: () => {
-          throw new Error(JSON.stringify(responseData));
+          throw responseData
         },
       };
 
