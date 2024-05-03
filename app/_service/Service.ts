@@ -1,3 +1,4 @@
+import { baseUrl } from "../_utils/baseUrl";
 export interface ResponseType<R> {
   statusCode: number;
   message: string | null;
@@ -33,10 +34,7 @@ class Service {
   private headers: Record<string, string>;
 
   constructor() {
-    this.baseURL =
-      process.env.NODE_ENV === "production"
-        ? "https://beomjoon.site"
-        : "http://localhost:8000";
+    this.baseURL = baseUrl||"http://localhost:8000";
     this.headers = {
       csrf: "token",
       Referer: this.baseURL,

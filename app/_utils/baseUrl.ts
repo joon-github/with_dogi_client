@@ -1,4 +1,4 @@
 export const baseUrl =
   process.env.NODE_ENV === "production"
-    ? "https://beomjoon.site"
+    ? process.env.BAKC_URL
     : "http://localhost:8000";
