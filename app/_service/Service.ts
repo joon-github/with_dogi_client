@@ -29,15 +29,15 @@ interface HTTPInstance {
 class Service {
   public http: HTTPInstance;
 
-  private baseURL: string;
+  private baseURL: string | undefined;
 
   private headers: Record<string, string>;
 
   constructor() {
-    this.baseURL = baseUrl||"http://localhost:8000";
+    this.baseURL = baseUrl;
     this.headers = {
       csrf: "token",
-      Referer: this.baseURL,
+      Referer: this.baseURL||"http://localhost:8000",
     };
 
     this.http = {
