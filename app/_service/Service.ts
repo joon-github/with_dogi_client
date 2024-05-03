@@ -37,7 +37,7 @@ class Service {
     this.baseURL = baseUrl;
     this.headers = {
       csrf: "token",
-      Referer: this.baseURL||"http://localhost:8000",
+      // Referer: this.baseURL||"http://localhost:8000",
     };
 
     this.http = {
