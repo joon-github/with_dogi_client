@@ -18,18 +18,25 @@ export default function SideBar() {
         <Link href="/mypage/order">
           <div className={getLinkStyle("order")}>주문내역</div>
         </Link>
-        <Link href="/mypage/wish">문의 내역</Link>
-        {myInfo?.data?.role === "seller" && (
-          <Link href="/seller">
-            <div className={getLinkStyle("seller")}>판매자</div>
-          </Link>
-        )}
+        <Link href="/mypage/wish">
+          <div className={getLinkStyle("wish")}>문의 내역</div>
+        </Link>
       </Section>
       <Section title="커뮤니티">
         <Link href="/mypage/post">
           <div className={getLinkStyle("post")}>게시글</div>
         </Link>
       </Section>
+      {myInfo?.data?.role === "seller" && (
+        <Section title="판매자">
+          <Link href="/seller/sales-history">
+            <div className={getLinkStyle("sales-history")}>판매내역</div>
+          </Link>
+          <Link href="/seller/products">
+            <div className={getLinkStyle("products")}>상품관리</div>
+          </Link>
+        </Section>
+      )}
       {myInfo?.data?.role === "admin" && (
         <Section title="관리자">
           <Link href="/admin">
