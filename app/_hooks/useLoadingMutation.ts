@@ -10,6 +10,12 @@ const useLoadingMutation = (mutationFn: (...args: any[]) => any) => {
     onSettled: () => {
       queryClient.setQueryData(["isLoading"], false);
     },
+    onSuccess: (res) => {
+      console.log(res);
+    },
+    onError: (err) => {
+      console.log(err);
+    },
   });
 };
 

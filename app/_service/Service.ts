@@ -4,6 +4,7 @@ export interface ResponseType<R> {
   message: string | null;
   data: R;
 }
+
 interface HTTPInstance {
   get<R>(url: string, config?: RequestInit): Promise<ResponseType<R>>;
   delete<R>(url: string, config?: RequestInit): Promise<ResponseType<R>>;

@@ -37,7 +37,7 @@ export default function UserInfoForm({
   direction,
   children,
 }: Porps) {
-  const { mutate: onSubmit, isSuccess } = mutation;
+  const { mutate: onSubmit, isPending } = mutation;
   const [address, setAddress] = useState<Address>({
     address: defaultValues?.address || "",
     zonecode: defaultValues?.zonecode || "",
@@ -60,7 +60,7 @@ export default function UserInfoForm({
         <FormComponents.Form
           onSubmit={onSubmit}
           text={submitButtonLabel}
-          isLoading={isSuccess}
+          isLoading={isPending}
           direction={direction}
         >
           {use.includes("email") ? (
