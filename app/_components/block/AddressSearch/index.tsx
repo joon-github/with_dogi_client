@@ -12,7 +12,6 @@ export default function AddressSearch({ setAddress }: Props) {
   const handleAddressSearch = useCallback(() => {
     new window.daum.Postcode({
       oncomplete: function (data: Address) {
-        console.log(data);
         setAddress(data);
       },
     }).open();

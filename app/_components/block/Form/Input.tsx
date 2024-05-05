@@ -14,6 +14,7 @@ const Input = React.forwardRef<
     <input
       ref={ref as React.LegacyRef<HTMLInputElement>}
       className="w-full h-full focus:outline-none p-2 rounded-md"
+      onChange={props.onChange}
       {...props}
     />
   );

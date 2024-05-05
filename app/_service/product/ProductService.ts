@@ -13,6 +13,14 @@ class ProductService extends Service {
   saveBrand(data: BrandRequest) {
     return this.http.post<BrandRequest, null>(`/product/brand`, data);
   }
+
+  saveProduct(formData: FormData) {
+    return this.http.post<any, null>(`/product`, formData, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    });
+  }
 }
 
 // eslint-disable-next-line import/no-anonymous-default-export
