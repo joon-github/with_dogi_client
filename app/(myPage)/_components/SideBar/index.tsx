@@ -10,7 +10,7 @@ export default function SideBar() {
   return (
     <nav className="flex flex-col w-[200px] border-r border-slate-400 bg-slate-100">
       <Section title="MY 정보">
-        <Link href="/mypage/user-modify">
+        <Link href="/user-modify">
           <div className={getLinkStyle("user-modify")}>개인정보확인/수정</div>
         </Link>
       </Section>
