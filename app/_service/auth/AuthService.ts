@@ -14,6 +14,8 @@ export interface SignupRequest {
   phone: string;
   address: string;
 }
+
+export interface ProfileUpdate {}
 class AuthService extends Service {
   getMyInfo() {
     return this.http.get<MyInfo>(`/auth/myInfo`);
@@ -49,6 +51,14 @@ class AuthService extends Service {
       name: data.name,
       phone: data.phone,
       address: data.address,
+    });
+  }
+
+  profileUpdate(formData: FormData) {
+    return this.http.patch<ProfileUpdate, null>("/auth/profile", formData, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
     });
   }
 }

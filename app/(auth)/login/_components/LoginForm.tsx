@@ -12,7 +12,11 @@ export default function LoginForm() {
   const { mutate: onSubmit, isSuccess } = useLoadingMutation(submitLoginForm);
   return (
     <FormComponents>
-      <FormComponents.Form onSubmit={onSubmit}>
+      <FormComponents.Form
+        onSubmit={onSubmit}
+        text="로그인"
+        isLoading={isSuccess}
+      >
         <FormComponents.Item
           label="아이디"
           icon={<LuUser2 size={22} />}
@@ -29,7 +33,6 @@ export default function LoginForm() {
         >
           <FormComponents.Input type="password" maxLength={100} />
         </FormComponents.Item>
-        <FormComponents.SubmitButton text="로그인" isLoading={isSuccess} />
       </FormComponents.Form>
     </FormComponents>
   );

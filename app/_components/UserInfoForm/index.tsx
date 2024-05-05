@@ -12,25 +12,29 @@ import AddressSearch from "@/app/_components/block/AddressSearch";
 import { UseMutationResult } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
 import { Skeleton } from "@/app/_components/atom";
+import { Direction } from "../block/Form/Form";
 
 interface Address {
   address: string;
   zonecode: string;
 }
+
 interface Porps {
   mutation: UseMutationResult<any, Error, void, unknown>;
   submitButtonLabel: string;
   defaultValues?: any;
   use?: string[];
   isLoaded?: boolean;
+  direction?: Direction;
   children?: React.ReactNode;
 }
 export default function UserInfoForm({
   mutation,
   submitButtonLabel,
   defaultValues = false,
-  use = [],
+  use = ["email", "password", "name", "phone", "address", "detail"],
   isLoaded = false,
+  direction,
   children,
 }: Porps) {
   const { mutate: onSubmit, isSuccess } = mutation;
@@ -53,8 +57,13 @@ export default function UserInfoForm({
   return (
     <>
       <FormComponents>
-        <FormComponents.Form onSubmit={onSubmit}>
-          {!use.includes("email") ? null : (
+        <FormComponents.Form
+          onSubmit={onSubmit}
+          text={submitButtonLabel}
+          isLoading={isSuccess}
+          direction={direction}
+        >
+          {use.includes("email") ? (
             <FormComponents.Item
               label="아이디"
               icon={<LuUser2 size={22} />}
@@ -70,9 +79,9 @@ export default function UserInfoForm({
                 />
               )}
             </FormComponents.Item>
-          )}
-          {!use.includes("password") ? null : (
-            <div>
+          ) : null}
+          {use.includes("password") ? (
+            <>
               <FormComponents.Item
                 label="비밀번호"
                 fieldKey="password"
@@ -98,9 +107,9 @@ export default function UserInfoForm({
                   <FormComponents.Input type="password" maxLength={100} />
                 )}
               </FormComponents.Item>
-            </div>
-          )}
-          {!use.includes("name") ? null : (
+            </>
+          ) : null}
+          {use.includes("name") ? (
             <FormComponents.Item
               label="이름"
               icon={<LuPenLine size={22} />}
@@ -116,8 +125,8 @@ export default function UserInfoForm({
                 />
               )}
             </FormComponents.Item>
-          )}
-          {!use.includes("phone") ? null : (
+          ) : null}
+          {use.includes("phone") ? (
             <FormComponents.Item
               label="연락처"
               icon={<LuPhone size={22} />}
@@ -134,9 +143,9 @@ export default function UserInfoForm({
                 />
               )}
             </FormComponents.Item>
-          )}
+          ) : null}
 
-          {!use.includes("address") ? null : (
+          {use.includes("address") ? (
             <FormComponents.Item
               label="주소"
               icon={<LuHome size={22} />}
@@ -191,12 +200,8 @@ export default function UserInfoForm({
                 </div>
               </div>
             </FormComponents.Item>
-          )}
+          ) : null}
           {children}
-          <FormComponents.SubmitButton
-            text={submitButtonLabel}
-            isLoading={isSuccess}
-          />
         </FormComponents.Form>
       </FormComponents>
     </>

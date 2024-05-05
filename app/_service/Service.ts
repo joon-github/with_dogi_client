@@ -63,7 +63,7 @@ class Service {
       const responseData: ResponseType<null> =
         await refreshTokenResponse.json();
       if (responseData.statusCode === 403) {
-        throw new Error(JSON.stringify(responseData));
+        throw responseData;
       }
       if (responseData.statusCode === 200) {
         return retryFetch(); // 토큰 갱신 성공 후 요청 재시도
@@ -80,37 +80,49 @@ class Service {
   private async request<R, T = undefined>(
     method: string,
     url: string,
-    config?: RequestInit,
+    config?: any,
     body?: T
   ): Promise<ResponseType<R>> {
     try {
       const headers = new Headers(this.headers);
-
       if (body && ["POST", "PUT", "PATCH"].includes(method)) {
-        headers.set("Content-Type", "application/json");
+        if (config?.headers["Content-Type"] === "multipart/form-data") {
+          headers.set("Content-Type", "multipart/form-data");
+        } else {
+          headers.set("Content-Type", "application/json");
+        }
       }
 
-      const fetchConfig: RequestInit = {
+      const fetchConfig = {
         method: method,
         headers: headers,
         credentials: "include",
         ...config,
       };
-
       if (body && ["POST", "PUT", "PATCH"].includes(method)) {
-        fetchConfig.body = JSON.stringify(body);
+        if (headers.get("Content-Type") === "multipart/form-data") {
+          fetchConfig.body = body;
+          delete fetchConfig.headers;
+        } else {
+          fetchConfig.body = JSON.stringify(body);
+        }
       }
 
       const response = await fetch(this.baseURL + url, fetchConfig);
       const responseData: ResponseType<R> = await response.json();
-      console.log(responseData);
       const statusHandlers: {
-        [statusCode: number]: () => Promise<ResponseType<R>>;
+        [statusCode: number]: () => Promise<ResponseType<any>>;
       } = {
-        401: () =>
-          this.refreshToken(() =>
-            this.request<R, T>(method, url, config, body)
-          ),
+        401: async () => {
+          try {
+            return await this.refreshToken(() =>
+              this.request<R, T>(method, url, config, body)
+            );
+          } catch (e) {
+            console.log("asdf", e);
+            throw e;
+          }
+        },
         400: () => {
           throw responseData;
         },

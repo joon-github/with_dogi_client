@@ -27,6 +27,7 @@ function ReactQueryProcider({ children }: React.PropsWithChildren) {
           const isRequestError = responseError && "statusCode" in responseError;
           if (isRequestError && responseError.statusCode === 403) {
             router.push("/login");
+            alert("로그인 해주세요.");
           }
         },
       }),
