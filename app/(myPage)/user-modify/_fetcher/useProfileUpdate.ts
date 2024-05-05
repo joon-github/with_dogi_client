@@ -1,4 +1,5 @@
 import AuthService from "@/app/_service/auth/AuthService";
+import { AuthQueryKey } from "@/app/_service/auth/authQueryOptions";
 import { useQueryClient } from "@tanstack/react-query";
 export default function useProfileUpdate() {
   const queryClient = useQueryClient();
@@ -11,7 +12,7 @@ export default function useProfileUpdate() {
     formData.append("file", file);
     const res = await AuthService.profileUpdate(formData);
     if (res.statusCode === 200) {
-      queryClient.invalidateQueries({ queryKey: ["myInfo"] });
+      queryClient.invalidateQueries({ queryKey: AuthQueryKey.info() });
     }
   };
   return onSubmit;

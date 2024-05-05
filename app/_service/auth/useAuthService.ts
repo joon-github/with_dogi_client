@@ -1,10 +1,10 @@
 import { useQuery } from "@tanstack/react-query";
-import queryOptions from "./queryOptions";
+import authQueryOptions from "./authQueryOptions";
 
 export function useMyInfo() {
-  return useQuery(queryOptions.myInfo());
+  return useQuery(authQueryOptions.myInfo());
 }
 
 export function useLoginStatus() {
-  return useQuery(queryOptions.loginStatus());
+  return useQuery(authQueryOptions.loginStatus());
 }

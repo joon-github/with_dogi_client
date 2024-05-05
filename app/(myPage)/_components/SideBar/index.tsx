@@ -11,12 +11,12 @@ export default function SideBar() {
     <nav className="flex flex-col w-[200px] border-r border-slate-400 bg-slate-100">
       <Section title="MY 정보">
         <Link href="/user-modify">
-          <div className={getLinkStyle("user-modify")}>개인정보확인/수정</div>
+          <div className={getLinkStyle("user-modify")}>개인정보 확인/수정</div>
         </Link>
       </Section>
       <Section title="MY 쇼핑">
         <Link href="/mypage/order">
-          <div className={getLinkStyle("order")}>주문내역</div>
+          <div className={getLinkStyle("order")}>주문 내역</div>
         </Link>
         <Link href="/mypage/wish">
           <div className={getLinkStyle("wish")}>문의 내역</div>
@@ -30,10 +30,13 @@ export default function SideBar() {
       {myInfo?.data?.role === "seller" && (
         <Section title="판매자">
           <Link href="/seller/sales-history">
-            <div className={getLinkStyle("sales-history")}>판매내역</div>
+            <div className={getLinkStyle("sales-history")}>판매 내역</div>
           </Link>
-          <Link href="/seller/products">
-            <div className={getLinkStyle("products")}>상품관리</div>
+          <Link href="/seller/brand">
+            <div className={getLinkStyle("brand")}>브랜드 관리</div>
+          </Link>
+          <Link href="/seller/product">
+            <div className={getLinkStyle("products")}>상품 관리</div>
           </Link>
         </Section>
       )}

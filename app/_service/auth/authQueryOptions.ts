@@ -1,19 +1,19 @@
 import AuthService from "./AuthService";
 
-const queryKeys = {
+export const AuthQueryKey = {
   info: () => ["myInfo"] as const,
   loginStatus: () => ["loginStatus"] as const,
 };
 
-const queryOptions = {
+const authQueryOptions = {
   myInfo: () => ({
-    queryKey: queryKeys.info(),
+    queryKey: AuthQueryKey.info(),
     queryFn: () => AuthService.getMyInfo(),
   }),
   loginStatus: () => ({
-    queryKey: queryKeys.loginStatus(),
+    queryKey: AuthQueryKey.loginStatus(),
     queryFn: () => AuthService.getLoginStatus(),
   }),
 };
 
-export default queryOptions;
+export default authQueryOptions;

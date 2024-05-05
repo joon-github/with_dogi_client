@@ -9,13 +9,13 @@ import {
 } from "@/app/_utils/validations";
 export default function LoginForm() {
   const submitLoginForm = useOnSubmitLoginForm();
-  const { mutate: onSubmit, isSuccess } = useLoadingMutation(submitLoginForm);
+  const { mutate: onSubmit, isPending } = useLoadingMutation(submitLoginForm);
   return (
     <FormComponents>
       <FormComponents.Form
         onSubmit={onSubmit}
         text="로그인"
-        isLoading={isSuccess}
+        isLoading={isPending}
       >
         <FormComponents.Item
           label="아이디"
