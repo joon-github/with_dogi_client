@@ -10,6 +10,7 @@ interface Props {
   icon?: React.ReactNode;
   watchField?: string;
   value?: string | number | null;
+  className?: string;
 }
 
 export default function Item({
@@ -19,6 +20,7 @@ export default function Item({
   icon,
   watchField = "",
   value = null,
+  className = "",
   children,
 }: Props) {
   const data = React.useContext(FormContext);
@@ -52,7 +54,7 @@ export default function Item({
   return (
     <>
       <div
-        className={`flex items-center min-h-14  ${errorClasses} rounded-md  bg-white`}
+        className={`flex items-center min-h-14  ${errorClasses} rounded-md  bg-white ${className}`}
       >
         <label className="flex items-center whitespace-nowrap gap-2 min-w-min w-20 pl-3 border-r font-medium text-sm pr-2">
           {icon}

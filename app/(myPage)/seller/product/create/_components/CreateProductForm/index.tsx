@@ -32,33 +32,49 @@ export default function CrateProductForm() {
         <FormComponents.Item label="상품 이름" fieldKey="productName">
           <FormComponents.Input maxLength={100} />
         </FormComponents.Item>
-        <FormComponents.Item label="카테고리" fieldKey="categoryId">
-          <FormComponents.Selects
-            ariaLabel="카테고리"
-            data={categories?.data?.map((item) => ({
-              id: item.categoryId,
-              value: item.categoryId,
-              label: item.categoryName,
-              children: seleteDataSetting(
-                item.children,
-                "categoryId",
-                "categoryId",
-                "categoryName"
-              ),
-            }))}
-          />
+        <FormComponents.Item label="상품 설명" fieldKey="description">
+          <FormComponents.Input type="textarea" maxLength={15} />
         </FormComponents.Item>
-        <FormComponents.Item label="브랜드" fieldKey="brandId">
-          <FormComponents.Selects
-            ariaLabel="브랜드"
-            data={seleteDataSetting(
-              brandData?.data,
-              "brandId",
-              "brandId",
-              "brandName"
-            )}
-          />
+        <FormComponents.Item label="기본 금액" fieldKey="price">
+          <FormComponents.Input type="number" maxLength={15} />
         </FormComponents.Item>
+        <div className="flex gap-4">
+          <FormComponents.Item
+            label="카테고리"
+            fieldKey="categoryId"
+            className="flex-1"
+          >
+            <FormComponents.Selects
+              ariaLabel="카테고리"
+              data={categories?.data?.map((item) => ({
+                id: item.categoryId,
+                value: item.categoryId,
+                label: item.categoryName,
+                children: seleteDataSetting(
+                  item.children,
+                  "categoryId",
+                  "categoryId",
+                  "categoryName"
+                ),
+              }))}
+            />
+          </FormComponents.Item>
+          <FormComponents.Item
+            label="브랜드"
+            fieldKey="brandId"
+            className="flex-1"
+          >
+            <FormComponents.Selects
+              ariaLabel="브랜드"
+              data={seleteDataSetting(
+                brandData?.data,
+                "brandId",
+                "brandId",
+                "brandName"
+              )}
+            />
+          </FormComponents.Item>
+        </div>
       </FormComponents.Form>
     </FormComponents>
   );

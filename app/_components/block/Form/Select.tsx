@@ -39,7 +39,14 @@ const Selects = React.forwardRef<HTMLSelectElement, SelectProps>(
     };
     const etc = { ...rest } as any;
     return (
-      <Select ref={ref} {...etc} aria-label={ariaLabel}>
+      <Select
+        ref={ref}
+        {...etc}
+        aria-label={ariaLabel}
+        style={{
+          background: "white",
+        }}
+      >
         {data ? renderOptions(data) : []}
       </Select>
     );

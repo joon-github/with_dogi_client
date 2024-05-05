@@ -1,12 +1,18 @@
 import React from "react";
-// 타입을 HTMLInputElement로 명확히 지정합니다.
+
 const Input = React.forwardRef<
-  HTMLInputElement,
-  React.InputHTMLAttributes<HTMLInputElement>
+  HTMLElement, // HTMLInputElement 대신에 일반 HTMLElement를 사용
+  React.InputHTMLAttributes<HTMLInputElement | HTMLTextAreaElement>
 >((props, ref) => {
-  return (
+  return props.type === "textarea" ? (
+    <textarea
+      ref={ref as React.LegacyRef<HTMLTextAreaElement>}
+      className="w-full h-full focus:outline-none p-2 rounded-md"
+      {...props}
+    />
+  ) : (
     <input
-      ref={ref}
+      ref={ref as React.LegacyRef<HTMLInputElement>}
       className="w-full h-full focus:outline-none p-2 rounded-md"
       {...props}
     />

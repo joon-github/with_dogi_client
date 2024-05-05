@@ -11,7 +11,6 @@ import FormComponents from "@/app/_components/block/Form";
 import AddressSearch from "@/app/_components/block/AddressSearch";
 import { UseMutationResult } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
-import { Skeleton } from "@/app/_components/atom";
 import { Direction } from "../block/Form/Form";
 
 interface Address {
@@ -70,14 +69,10 @@ export default function UserInfoForm({
               fieldKey="email"
               validation={emailValidation}
             >
-              {!isLoaded ? (
-                <Skeleton className="w-full" isLoaded={isLoaded} />
-              ) : (
-                <FormComponents.Input
-                  maxLength={100}
-                  defaultValue={defaultValues?.email}
-                />
-              )}
+              <FormComponents.Input
+                maxLength={100}
+                defaultValue={defaultValues?.email}
+              />
             </FormComponents.Item>
           ) : null}
           {use.includes("password") ? (
@@ -88,11 +83,7 @@ export default function UserInfoForm({
                 icon={<LuLock size={22} />}
                 validation={signupPasswordValidation}
               >
-                {!isLoaded ? (
-                  <Skeleton className="w-full" isLoaded={isLoaded} />
-                ) : (
-                  <FormComponents.Input type="password" maxLength={100} />
-                )}
+                <FormComponents.Input type="password" maxLength={100} />
               </FormComponents.Item>
               <FormComponents.Item
                 label="비밀번호 확인"
@@ -101,11 +92,7 @@ export default function UserInfoForm({
                 watchField="password"
                 validation={passwordConfirmValidation}
               >
-                {!isLoaded ? (
-                  <Skeleton className="w-full" isLoaded={isLoaded} />
-                ) : (
-                  <FormComponents.Input type="password" maxLength={100} />
-                )}
+                <FormComponents.Input type="password" maxLength={100} />
               </FormComponents.Item>
             </>
           ) : null}
@@ -116,14 +103,10 @@ export default function UserInfoForm({
               fieldKey="name"
               validation={nameValidation}
             >
-              {!isLoaded ? (
-                <Skeleton className="w-full" isLoaded={isLoaded} />
-              ) : (
-                <FormComponents.Input
-                  maxLength={30}
-                  defaultValue={defaultValues?.name}
-                />
-              )}
+              <FormComponents.Input
+                maxLength={30}
+                defaultValue={defaultValues?.name}
+              />
             </FormComponents.Item>
           ) : null}
           {use.includes("phone") ? (
@@ -133,15 +116,11 @@ export default function UserInfoForm({
               fieldKey="phone"
               validation={phoneValidation}
             >
-              {!isLoaded ? (
-                <Skeleton className="w-full" isLoaded={isLoaded} />
-              ) : (
-                <FormComponents.Input
-                  type="number"
-                  maxLength={15}
-                  defaultValue={defaultValues?.phone}
-                />
-              )}
+              <FormComponents.Input
+                type="number"
+                maxLength={15}
+                defaultValue={defaultValues?.phone}
+              />
             </FormComponents.Item>
           ) : null}
 
@@ -164,39 +143,29 @@ export default function UserInfoForm({
                     placeholder="우편번호"
                     hidden
                   />
-                  {!isLoaded ? (
-                    <Skeleton className="w-full" isLoaded={isLoaded} />
-                  ) : (
-                    <>
-                      <FormComponents.Input
-                        defaultValue={address.zonecode}
-                        placeholder="우편번호"
-                        disabled
-                      />
-                      <AddressSearch setAddress={setAddress} />
-                    </>
-                  )}
-                </div>
-                <div className="flex flex-col">
-                  {!isLoaded ? (
-                    <Skeleton className="w-full" isLoaded={isLoaded} />
-                  ) : (
+
+                  <>
                     <FormComponents.Input
-                      defaultValue={address.address}
-                      placeholder="주소"
+                      defaultValue={address.zonecode}
+                      placeholder="우편번호"
                       disabled
                     />
-                  )}
-                  {!isLoaded ? (
-                    <Skeleton className="w-full" isLoaded={isLoaded} />
-                  ) : (
-                    <FormComponents.Input
-                      placeholder="상세주소"
-                      defaultValue={addressDetail}
-                      onChange={(e) => setAddressDetail(e.target.value)}
-                      maxLength={100}
-                    />
-                  )}
+                    <AddressSearch setAddress={setAddress} />
+                  </>
+                </div>
+                <div className="flex flex-col">
+                  <FormComponents.Input
+                    defaultValue={address.address}
+                    placeholder="주소"
+                    disabled
+                  />
+
+                  <FormComponents.Input
+                    placeholder="상세주소"
+                    defaultValue={addressDetail}
+                    onChange={(e) => setAddressDetail(e.target.value)}
+                    maxLength={100}
+                  />
                 </div>
               </div>
             </FormComponents.Item>
