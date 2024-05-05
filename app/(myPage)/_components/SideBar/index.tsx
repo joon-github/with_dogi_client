@@ -36,7 +36,7 @@ export default function SideBar() {
             <div className={getLinkStyle("brand")}>브랜드 관리</div>
           </Link>
           <Link href="/seller/product">
-            <div className={getLinkStyle("products")}>상품 관리</div>
+            <div className={getLinkStyle("product")}>상품 관리</div>
           </Link>
         </Section>
       )}

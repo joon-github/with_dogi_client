@@ -7,11 +7,11 @@ export interface BrandRequest {
 
 class ProductService extends Service {
   getMyBrand() {
-    return this.http.get<Brand>(`/product/brand/my`);
+    return this.http.get<Brand[]>(`/product/brand/my`);
   }
 
   saveBrand(data: BrandRequest) {
-    return this.http.post<Brand, null>(`/product/brand`, data);
+    return this.http.post<BrandRequest, null>(`/product/brand`, data);
   }
 }
 

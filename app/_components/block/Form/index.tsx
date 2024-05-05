@@ -2,6 +2,7 @@ import { createContext } from "react";
 import Form from "./Form";
 import Item from "./Item";
 import Input from "./Input";
+import Selects from "./Select";
 import ItemContentsWrapper from "./ItemContentsWrapper";
 import SubmitButton from "./SubmitButton";
 import { useForm } from "react-hook-form";
@@ -43,6 +44,7 @@ const FormComponents = Object.assign(FormConteainer, {
   SubmitButton,
   Input,
   ItemContentsWrapper,
+  Selects,
 });
 
 export default FormComponents;
