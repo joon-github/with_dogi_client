@@ -103,7 +103,7 @@ class Service {
 
       const response = await fetch(this.baseURL + url, fetchConfig);
       const responseData: ResponseType<R> = await response.json();
-
+      console.log(responseData);
       const statusHandlers: {
         [statusCode: number]: () => Promise<ResponseType<R>>;
       } = {
@@ -112,10 +112,10 @@ class Service {
             this.request<R, T>(method, url, config, body)
           ),
         400: () => {
-          throw responseData
+          throw responseData;
         },
         403: () => {
-          throw responseData
+          throw responseData;
         },
       };
 

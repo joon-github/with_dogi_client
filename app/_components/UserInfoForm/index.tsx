@@ -21,7 +21,7 @@ interface Porps {
   mutation: UseMutationResult<any, Error, void, unknown>;
   submitButtonLabel: string;
   defaultValues?: any;
-  excepts?: string[];
+  use?: string[];
   isLoaded?: boolean;
   children?: React.ReactNode;
 }
@@ -29,7 +29,7 @@ export default function UserInfoForm({
   mutation,
   submitButtonLabel,
   defaultValues = false,
-  excepts = [],
+  use = [],
   isLoaded = false,
   children,
 }: Porps) {
@@ -54,7 +54,7 @@ export default function UserInfoForm({
     <>
       <FormComponents>
         <FormComponents.Form onSubmit={onSubmit}>
-          {excepts.includes("email") ? null : (
+          {!use.includes("email") ? null : (
             <FormComponents.Item
               label="아이디"
               icon={<LuUser2 size={22} />}
@@ -62,7 +62,7 @@ export default function UserInfoForm({
               validation={emailValidation}
             >
               {!isLoaded ? (
-                <Skeleton claaName="w-full" isLoaded={isLoaded} />
+                <Skeleton className="w-full" isLoaded={isLoaded} />
               ) : (
                 <FormComponents.Input
                   maxLength={100}
@@ -71,36 +71,36 @@ export default function UserInfoForm({
               )}
             </FormComponents.Item>
           )}
-          {excepts.includes("password") ? null : (
-            <FormComponents.Item
-              label="비밀번호"
-              fieldKey="password"
-              icon={<LuLock size={22} />}
-              validation={signupPasswordValidation}
-            >
-              {!isLoaded ? (
-                <Skeleton claaName="w-full" isLoaded={isLoaded} />
-              ) : (
-                <FormComponents.Input type="password" maxLength={100} />
-              )}
-            </FormComponents.Item>
+          {!use.includes("password") ? null : (
+            <div>
+              <FormComponents.Item
+                label="비밀번호"
+                fieldKey="password"
+                icon={<LuLock size={22} />}
+                validation={signupPasswordValidation}
+              >
+                {!isLoaded ? (
+                  <Skeleton className="w-full" isLoaded={isLoaded} />
+                ) : (
+                  <FormComponents.Input type="password" maxLength={100} />
+                )}
+              </FormComponents.Item>
+              <FormComponents.Item
+                label="비밀번호 확인"
+                fieldKey="passwordConfirm"
+                icon={<LuLock size={22} />}
+                watchField="password"
+                validation={passwordConfirmValidation}
+              >
+                {!isLoaded ? (
+                  <Skeleton className="w-full" isLoaded={isLoaded} />
+                ) : (
+                  <FormComponents.Input type="password" maxLength={100} />
+                )}
+              </FormComponents.Item>
+            </div>
           )}
-          {excepts.includes("passwordConfirm") ? null : (
-            <FormComponents.Item
-              label="비밀번호 확인"
-              fieldKey="passwordConfirm"
-              icon={<LuLock size={22} />}
-              watchField="password"
-              validation={passwordConfirmValidation}
-            >
-              {!isLoaded ? (
-                <Skeleton claaName="w-full" isLoaded={isLoaded} />
-              ) : (
-                <FormComponents.Input type="password" maxLength={100} />
-              )}
-            </FormComponents.Item>
-          )}
-          {excepts.includes("name") ? null : (
+          {!use.includes("name") ? null : (
             <FormComponents.Item
               label="이름"
               icon={<LuPenLine size={22} />}
@@ -108,7 +108,7 @@ export default function UserInfoForm({
               validation={nameValidation}
             >
               {!isLoaded ? (
-                <Skeleton claaName="w-full" isLoaded={isLoaded} />
+                <Skeleton className="w-full" isLoaded={isLoaded} />
               ) : (
                 <FormComponents.Input
                   maxLength={30}
@@ -117,7 +117,7 @@ export default function UserInfoForm({
               )}
             </FormComponents.Item>
           )}
-          {excepts.includes("phone") ? null : (
+          {!use.includes("phone") ? null : (
             <FormComponents.Item
               label="연락처"
               icon={<LuPhone size={22} />}
@@ -125,7 +125,7 @@ export default function UserInfoForm({
               validation={phoneValidation}
             >
               {!isLoaded ? (
-                <Skeleton claaName="w-full" isLoaded={isLoaded} />
+                <Skeleton className="w-full" isLoaded={isLoaded} />
               ) : (
                 <FormComponents.Input
                   type="number"
@@ -136,7 +136,7 @@ export default function UserInfoForm({
             </FormComponents.Item>
           )}
 
-          {excepts.includes("address") ? null : (
+          {!use.includes("address") ? null : (
             <FormComponents.Item
               label="주소"
               icon={<LuHome size={22} />}
@@ -156,7 +156,7 @@ export default function UserInfoForm({
                     hidden
                   />
                   {!isLoaded ? (
-                    <Skeleton claaName="w-full" isLoaded={isLoaded} />
+                    <Skeleton className="w-full" isLoaded={isLoaded} />
                   ) : (
                     <>
                       <FormComponents.Input
@@ -170,7 +170,7 @@ export default function UserInfoForm({
                 </div>
                 <div className="flex flex-col">
                   {!isLoaded ? (
-                    <Skeleton claaName="w-full" isLoaded={isLoaded} />
+                    <Skeleton className="w-full" isLoaded={isLoaded} />
                   ) : (
                     <FormComponents.Input
                       defaultValue={address.address}
@@ -179,7 +179,7 @@ export default function UserInfoForm({
                     />
                   )}
                   {!isLoaded ? (
-                    <Skeleton claaName="w-full" isLoaded={isLoaded} />
+                    <Skeleton className="w-full" isLoaded={isLoaded} />
                   ) : (
                     <FormComponents.Input
                       placeholder="상세주소"

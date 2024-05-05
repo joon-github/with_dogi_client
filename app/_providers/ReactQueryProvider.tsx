@@ -6,6 +6,7 @@ import {
   QueryCache,
 } from "@tanstack/react-query";
 import { useRouter } from "next/navigation";
+import { ResponseType } from "../_service/Service";
 // import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 // import { ReactQueryStreamedHydration } from "@tanstack/react-query-next-experimental";
 
@@ -22,8 +23,9 @@ function ReactQueryProcider({ children }: React.PropsWithChildren) {
       },
       queryCache: new QueryCache({
         onError: (error) => {
-          const errorParsed = JSON.parse(error.message);
-          if (errorParsed.statusCode === 403) {
+          const responseError = error as unknown as ResponseType<unknown>;
+          const isRequestError = responseError && "statusCode" in responseError;
+          if (isRequestError && responseError.statusCode === 403) {
             router.push("/login");
           }
         },

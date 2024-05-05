@@ -15,15 +15,36 @@ export default function UserModify() {
         <UserInfoForm
           isLoaded={isSuccess}
           mutation={mutation}
-          submitButtonLabel="회원정보 수정"
-          excepts={["email"]}
+          submitButtonLabel="비밀번호 변경"
+          use={["password"]}
+        />
+        <UserInfoForm
+          isLoaded={isSuccess}
+          mutation={mutation}
+          submitButtonLabel="이름 변경"
+          use={["name"]}
+          defaultValues={{
+            name: myInfo?.data?.name,
+          }}
+        />
+        <UserInfoForm
+          isLoaded={isSuccess}
+          mutation={mutation}
+          submitButtonLabel="연락처 변경"
+          use={["phone"]}
+          defaultValues={{
+            phone: myInfo?.data?.phone,
+          }}
+        />
+        <UserInfoForm
+          isLoaded={isSuccess}
+          mutation={mutation}
+          submitButtonLabel="주소 변경"
+          use={["address"]}
           defaultValues={{
             zonecode: myInfo?.data?.address.split("/")[0] || "",
             address: myInfo?.data?.address.split("/")[1] || "",
             detail: myInfo?.data?.address.split("/")[2] || "",
-            name: myInfo?.data?.name,
-            email: myInfo?.data?.email,
-            phone: myInfo?.data?.phone,
           }}
         />
       </div>
