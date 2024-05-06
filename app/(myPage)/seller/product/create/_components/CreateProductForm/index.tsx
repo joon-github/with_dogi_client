@@ -6,6 +6,7 @@ import { useState } from "react";
 import { FaPlusCircle } from "react-icons/fa";
 import useOnSubmitProductForm from "../../_fetcher/useOnSubmitProductForm";
 import useLoadingMutation from "@/app/_hooks/useLoadingMutation";
+import ImageUpload from "@/app/_components/block/ImageUpload";
 
 interface Option {
   optionName: string;
@@ -16,6 +17,7 @@ export default function CrateProductForm() {
   const { data: categories } = useCategory("product");
   const { data: brandData } = useMyBrand();
   const [addOption, setAddOption] = useState<Option[]>([]);
+  const [images, setImages] = useState<any>({});
   const seleteDataSetting = (
     data: any,
     idkey: string,
@@ -117,6 +119,14 @@ export default function CrateProductForm() {
                     fieldKey={`option-stock-${index}`}
                   >
                     <FormComponents.Input maxLength={100} />
+                  </FormComponents.Item>
+                  <FormComponents.Item
+                    label="옵션 이미지"
+                    fieldKey={`option-image-${index}`}
+                    value={images[index]}
+                  >
+                    <FormComponents.Input className="hidden" />
+                    <ImageUpload index={index} setImages={setImages} />
                   </FormComponents.Item>
                 </div>
               );

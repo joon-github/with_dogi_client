@@ -20,10 +20,6 @@ export default function ProfileImageEditor({
       formData.append("file", files[0]);
       submit(files[0]);
     }
-    // await fetch(baseUrl + "/auth/profile", {
-    //   method: "POST",
-    //   body: formData,
-    // });
   };
 
   return (
@@ -32,7 +28,7 @@ export default function ProfileImageEditor({
         <Image
           width={200}
           height={200}
-          alt="NextUI hero Image with delay"
+          alt="profile image"
           src={photoUrl || ""}
         />
       </div>

@@ -1,10 +1,10 @@
-import React from "react";
 import ProductService from "@/app/_service/product/ProductService";
 
 interface Option {
   optionName: string;
   addPrice: number;
   stock: number;
+  file?: string;
 }
 
 interface ProductFormData {
@@ -19,6 +19,7 @@ interface ProductFormData {
 export default function useOnSubmitProductForm() {
   const onSubmit = async (data: ProductFormData) => {
     const formData = new FormData();
+    console.log(data);
     formData.append("productName", data.productName);
     formData.append("description", data.description);
     formData.append("price", data.price);
@@ -26,9 +27,7 @@ export default function useOnSubmitProductForm() {
     formData.append("brandId", data.brandId);
     const options: Option[] = parseOptions(data);
     formData.append("options", JSON.stringify(options));
-
     const response = await ProductService.saveProduct(formData);
-    console.log(response);
     return response;
   };
 
@@ -48,6 +47,8 @@ export default function useOnSubmitProductForm() {
         result[index].addPrice = data[key] === "" ? 0 : parseFloat(data[key]);
       } else if (key.includes("stock")) {
         result[index].stock = data[key] === "" ? 0 : parseInt(data[key], 10);
+      } else if (key.includes("image")) {
+        result[index].file = data[key];
       }
     });
     return result.filter((option) => option.optionName);
