@@ -9,7 +9,7 @@ interface Props {
   children: React.ReactNode;
   icon?: React.ReactNode;
   watchField?: string;
-  value?: string | number | null;
+  value?: any;
   className?: string;
 }
 

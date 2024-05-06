@@ -22,7 +22,10 @@ export default function RootLayout({
       <ReactQueryProcider>
         <body>
           <NextUIProvider>
-            <div id="" className={`${inter.className} h-screen flex flex-col`}>
+            <div
+              id=""
+              className={`${inter.className} h-screen flex flex-col overflow-hidden`}
+            >
               {children}
               <Footer />
             </div>

@@ -9,12 +9,17 @@ export default function MyPageLayout({
 }>) {
   return (
     <PrefetchHydration queries={[]}>
-      <div className="h-full">
-        <Header />
-        <div className="flex h-full">
-          <SideBar />
-          <main className="w-full py-8 px-[100px]">{children}</main>
-        </div>
+      <Header />
+      <div className="flex flex-1">
+        <SideBar />
+        <main
+          className="w-full py-8 px-[100px] overflow-y-auto"
+          style={{
+            height: "calc(100vh - 150px)",
+          }}
+        >
+          {children}
+        </main>
       </div>
     </PrefetchHydration>
   );

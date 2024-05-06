@@ -19,12 +19,13 @@ interface ProductFormData {
 export default function useOnSubmitProductForm() {
   const onSubmit = async (data: ProductFormData) => {
     const formData = new FormData();
-    console.log(data);
+
     formData.append("productName", data.productName);
     formData.append("description", data.description);
     formData.append("price", data.price);
     formData.append("categoryId", data.categoryId);
     formData.append("brandId", data.brandId);
+    formData.append("images", JSON.stringify(data.images));
     const options: Option[] = parseOptions(data);
     formData.append("options", JSON.stringify(options));
     const response = await ProductService.saveProduct(formData);

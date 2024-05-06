@@ -12,7 +12,7 @@ import { Image } from "@nextui-org/react";
 
 interface FileData {
   id?: number;
-  name: string;
+  imageName: string;
   file: string;
 }
 export default function CrateProductForm() {
@@ -35,7 +35,7 @@ export default function CrateProductForm() {
             ...prev,
             {
               id: Math.random(),
-              name: file.name,
+              imageName: file.name,
               file: reader.result,
             },
           ];
@@ -141,25 +141,34 @@ export default function CrateProductForm() {
 
         <div id="productImage" className="flex-1 p-4">
           <h3 className="text-lg font-bold mb-4">상품 설명 이미지</h3>
-          {productImages.length > 0 ? (
-            <div className="flex gap-4">
-              {productImages.map((item: FileData) => (
-                <div key={item.id} className="flex flex-col gap-2 w-[120px]">
-                  <div className="h-[120px] overflow-scroll">
-                    <Image
-                      src={item.file}
-                      alt="image"
-                      width={100}
-                      height={100}
-                    />
+          <FormComponents.Item
+            label="상품 설명 이미지"
+            fieldKey={`images`}
+            validation={required("상품 설명 이미지를 추가해 주세요.")}
+            value={productImages}
+          >
+            {productImages.length > 0 ? (
+              <div className="flex gap-4">
+                {productImages.map((item: FileData) => (
+                  <div key={item.id} className="flex flex-col gap-2 w-[120px]">
+                    <div className="h-[120px] overflow-scroll">
+                      <Image
+                        src={item.file}
+                        alt="image"
+                        width={100}
+                        height={100}
+                      />
+                    </div>
+                    <div className="text-sm truncate w-[120px]">
+                      {item.imageName}
+                    </div>
                   </div>
-                  <div className="text-sm truncate w-[120px]">{item.name}</div>
-                </div>
-              ))}
-            </div>
-          ) : (
-            <div>상품 설명 이미지를 추가해주세요.</div>
-          )}
+                ))}
+              </div>
+            ) : (
+              <div>상품 설명 이미지를 추가해주세요.</div>
+            )}
+          </FormComponents.Item>
           <label className="cursor-pointer w-full h-12 border rounded-md bg-green-100 mt-4 flex items-center justify-center gap-2">
             <input
               type="file"

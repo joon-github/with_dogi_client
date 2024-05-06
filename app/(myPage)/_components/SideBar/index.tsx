@@ -8,7 +8,7 @@ export default function SideBar() {
   const getLinkStyle = useGetLinkStyle();
   const { data: myInfo } = useMyInfo();
   return (
-    <nav className="flex flex-col w-[200px] border-r border-slate-400 bg-slate-100">
+    <nav className="flex flex-col w-[220px] border-r border-slate-400 bg-slate-100">
       <Section title="MY 정보">
         <Link href="/user-modify">
           <div className={getLinkStyle("user-modify")}>개인정보 확인/수정</div>
