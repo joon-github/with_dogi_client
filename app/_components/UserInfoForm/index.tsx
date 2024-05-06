@@ -1,10 +1,10 @@
 import { LuUser2, LuLock, LuPhone, LuPenLine, LuHome } from "react-icons/lu";
 import {
-  addressValidation,
   emailValidation,
   nameValidation,
   passwordConfirmValidation,
   phoneValidation,
+  required,
   signupPasswordValidation,
 } from "@/app/_utils/validations";
 import FormComponents from "@/app/_components/block/Form";
@@ -129,7 +129,7 @@ export default function UserInfoForm({
               label="주소"
               icon={<LuHome size={22} />}
               fieldKey="address"
-              validation={addressValidation}
+              validation={required("주소를 전부 입력해 주세요.")}
               value={
                 addressDetail === "" || address.address === ""
                   ? ""

@@ -19,15 +19,17 @@ export const signupPasswordValidation = {
   },
 };
 
-export const loginPasswordValidation = {
-  required: "비밀번호을 입력해 주세요.",
-};
-
 export const passwordConfirmValidation = (passwordWatch: any) => ({
   required: "비밀번호를 입력해 주세요.",
   validate: (value: string) =>
     value === passwordWatch || "비밀번호가 일치하지 않습니다.",
 });
+
+export const required = (message: string) => {
+  return {
+    required: message,
+  };
+};
 
 export const nameValidation = {
   required: "이름를 입력해 주세요.",
@@ -47,8 +49,4 @@ export const phoneValidation = {
     value: /^\d{11}$/,
     message: "연락처를 정확하게 입력해 주세요.",
   },
-};
-
-export const addressValidation = {
-  required: "주소를 전부 입력해 주세요.",
 };

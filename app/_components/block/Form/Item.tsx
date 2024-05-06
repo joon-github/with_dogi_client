@@ -52,7 +52,7 @@ export default function Item({
     ? "border border-red-500 focus:border-red-500"
     : "border border-gray-300";
   return (
-    <>
+    <div className="flex-1">
       <div
         className={`flex items-center min-h-14  ${errorClasses} rounded-md  bg-white ${className}`}
       >
@@ -69,6 +69,6 @@ export default function Item({
           </div>
         )}
       </div>
-    </>
+    </div>
   );
 }
