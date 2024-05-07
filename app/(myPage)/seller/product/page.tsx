@@ -27,7 +27,7 @@ export default function SellerProducts() {
                     className="flex border border-slate-400 rounded-lg p-2 my-2"
                   >
                     <Image
-                      src={product.options[0]?.imageUrl || "/no-image.png"}
+                      src={product.mainImageUrl || "/no-image.png"}
                       alt={product.productName}
                       width={100}
                       height={100}

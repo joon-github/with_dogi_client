@@ -17,7 +17,7 @@ export interface Image {
   imageId: number;
   imageUrl: string;
 }
-export interface Product{
+export interface Product {
   productId: number;
   productCode: string;
   productName: string;
@@ -29,5 +29,5 @@ export interface Product{
   category: Category;
   options: Option[];
   images: Image[];
-
+  mainImageUrl: string;
 }
