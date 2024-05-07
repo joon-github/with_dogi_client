@@ -15,22 +15,24 @@ interface FileData {
   imageName: string;
   file: string;
 }
+interface StringMap {
+  [key: string]: string;
+}
 export default function CrateProductForm() {
   const { data: categories } = useCategory("product");
   const { data: brandData } = useMyBrand();
-  const [addOption, setAddOption] = useState([{}]);
-  const [optionImages, setOptionImages] = useState<any>({});
+  const [addOption, setAddOption] = useState<StringMap[]>([{}]);
+  const [optionImages, setOptionImages] = useState<StringMap>({});
   const [productImages, setProductImages] = useState<FileData[]>([]);
 
-  const handleImageChange = (e: any) => {
+  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
     // 파일 리더 인스턴스 생성
     let reader = new FileReader();
-    let file = e.target.files[0];
-    console.log(file);
+    let file = e.target.files?e.target.files[0]:null;
     if (file) {
       reader.onloadend = () => {
-        setProductImages((prev: any) => {
+        setProductImages((prev: FileData[]|any) => {
           return [
             ...prev,
             {
@@ -41,11 +43,10 @@ export default function CrateProductForm() {
           ];
         });
       };
+      reader.readAsDataURL(file);
     }
-    reader.readAsDataURL(file);
   };
 
-  console.log(productImages);
 
   const seleteDataSetting = (
     data: any,
