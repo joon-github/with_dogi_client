@@ -11,14 +11,14 @@ const Loader = () => {
     queryFn: () => false, // 초기 상태 설정
     staleTime: Infinity, // 데이터가 만료되지 않도록 설정
   });
-  return isLoading ? (
-    <div className="loader-container">
+  return (
+    <div className={`loader-container ${isLoading ? "" : "hidden"}`}>
       <div className="loader-wrapper">
         <WithDogi />
         <p className="text">잠시만 기다려주세요...!</p>
       </div>
     </div>
-  ) : null;
+  );
 };
 
 export default Loader;

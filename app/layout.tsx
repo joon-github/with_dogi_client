@@ -23,16 +23,14 @@ export default function RootLayout({
       <ReactQueryProcider>
         <body className={jua.className}>
           <NextUIProvider>
-            <div
-              className={`h-screen flex flex-col`}
-            >
-              <Alert/>
+            <div className={`h-screen flex flex-col`}>
+              <Alert />
               {children}
               <Footer />
             </div>
           </NextUIProvider>
+          <Loader />
         </body>
-        <Loader />
       </ReactQueryProcider>
     </html>
   );
