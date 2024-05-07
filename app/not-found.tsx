@@ -9,7 +9,7 @@ export default function NotFound() {
           <Image 
             src="/dogi.png" 
             width={150}
-            height={150} 
+            height={240} 
             alt="dog" 
             className="absolute top-[-250px]"
           />

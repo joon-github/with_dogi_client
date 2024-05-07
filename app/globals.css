@@ -2,19 +2,18 @@
 @tailwind components;
 @tailwind utilities;
 
-@font-face {
-  font-family: 'NotoSansKR-VariableFont_wght';
-  font-weight: 600;
-  src: url('../public/fonts/Noto_Sans_KR/NotoSansKR-VariableFont_wght.ttf') format('opentype');
-}
+
 :root {
 }
-main {
-  flex: 1;
+html {
+  height: 100vh;
 }
 body {
   background: #fff;
-  height: 100vh;
+  height: 100%;
+}
+main{
+  flex:1;
 }
 
 a {
