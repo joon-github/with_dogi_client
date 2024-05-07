@@ -24,7 +24,7 @@ export default function RootLayout({
           <NextUIProvider>
             <div
               id=""
-              className={`${inter.className} h-screen flex flex-col overflow-hidden`}
+              className={`${inter.className} h-screen flex flex-col overflow-hidden  min-w-[800px] overflow-x-scroll overflow-y-hidden`}
             >
               {children}
               <Footer />
