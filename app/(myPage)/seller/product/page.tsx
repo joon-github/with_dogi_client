@@ -1,10 +1,12 @@
 "use client";
 import Link from "next/link";
 import SubTitle from "../../_components/SubTitle";
-import useAlert from "@/app/_hooks/useAlert";
+import { useMyProductList } from "@/app/_service/product/useProductService";
+import { Image } from "@nextui-org/react";
 
 export default function SellerProducts() {
-  const { alert } = useAlert();
+  const { data: productData, isSuccess } = useMyProductList();
+  console.log(productData);
   return (
     <>
       <SubTitle title="상품관리" />
@@ -13,13 +15,35 @@ export default function SellerProducts() {
           <button>
             <Link href="/seller/product/create">상품 추가</Link>
           </button>
-          <button
-            onClick={() => {
-              alert("상품이 추가되었습니다.");
-            }}
-          >
-            test
-          </button>
+          <div>
+            {isSuccess &&
+              productData?.data?.map((product) => (
+                <Link
+                  key={product.productId}
+                  href={`/seller/product/${product.productId}`}
+                >
+                  <div
+                    key={product.productId}
+                    className="flex border border-slate-400 rounded-lg p-2 my-2"
+                  >
+                    <Image
+                      src={product.options[0]?.imageUrl || "/no-image.png"}
+                      alt={product.productName}
+                      width={100}
+                      height={100}
+                    />
+                    <div>
+                      <div className="text-base font-bold">
+                        {product.productName}
+                      </div>
+                      <div className="text-sm text-gray-500">
+                        {product.description}
+                      </div>
+                    </div>
+                  </div>
+                </Link>
+              ))}
+          </div>
         </div>
       </div>
     </>

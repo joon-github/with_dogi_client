@@ -3,11 +3,10 @@ import { useState } from "react";
 import { CiImageOn } from "react-icons/ci";
 
 interface Props {
-  index: number;
   setImages: any;
 }
 
-export default function ImageUpload({ index, setImages }: Props) {
+export default function ImageUpload({ setImages }: Props) {
   const [imagePreviewUrl, setImagePreviewUrl] = useState<any>("");
   const handleImageChange = (e: any) => {
     e.preventDefault();
@@ -16,9 +15,7 @@ export default function ImageUpload({ index, setImages }: Props) {
     let file = e.target.files[0];
     if (file) {
       reader.onloadend = () => {
-        setImages((prev: any) => {
-          return { ...prev, [index]: reader.result };
-        });
+        setImages(reader.result);
         setImagePreviewUrl(reader.result);
       };
 

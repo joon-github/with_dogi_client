@@ -5,7 +5,7 @@ export interface BrandRequest {
   brandName: string;
 }
 
-export interface GetProductQuery { 
+export interface GetProductQuery {
   offset: number;
   limit: number;
   productCode?: string;
@@ -30,6 +30,10 @@ class ProductService extends Service {
       }
     });
     return this.http.get<Product[]>(`/product?${queryString}`);
+  }
+
+  getMyProductList() {
+    return this.http.get<Product[]>(`/product/my`);
   }
 
   saveProduct(formData: FormData) {

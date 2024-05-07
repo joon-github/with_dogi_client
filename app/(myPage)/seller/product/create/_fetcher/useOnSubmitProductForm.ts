@@ -21,11 +21,13 @@ export default function useOnSubmitProductForm() {
     const formData = new FormData();
 
     formData.append("productName", data.productName);
+    formData.append("mainImage", JSON.stringify({ file: data.mainImage }));
     formData.append("description", data.description);
     formData.append("price", data.price);
     formData.append("categoryId", data.categoryId);
     formData.append("brandId", data.brandId);
     formData.append("images", JSON.stringify(data.images));
+
     const options: Option[] = parseOptions(data);
     formData.append("options", JSON.stringify(options));
     const response = await ProductService.saveProduct(formData);

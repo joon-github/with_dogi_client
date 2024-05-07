@@ -11,7 +11,6 @@ import { required } from "@/app/_utils/validations";
 import { Image } from "@nextui-org/react";
 import checkFileExtension from "@/app/_utils/checkImageFileExtension";
 
-
 interface FileData {
   id?: number;
   imageName: string;
@@ -24,17 +23,20 @@ export default function CrateProductForm() {
   const { data: categories } = useCategory("product");
   const { data: brandData } = useMyBrand();
   const [addOption, setAddOption] = useState<StringMap[]>([{}]);
+  const [mainImage, setMainImage] = useState<string>("");
   const [optionImages, setOptionImages] = useState<StringMap>({});
   const [productImages, setProductImages] = useState<FileData[]>([]);
 
   const handleImageChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
     // 파일 리더 인스턴스 생성
-    const image = await checkFileExtension(e.target.files? e.target.files[0]:null);
+    const image = await checkFileExtension(
+      e.target.files ? e.target.files[0] : null
+    );
     if (image) {
       let reader = new FileReader();
       reader.onloadend = () => {
-        setProductImages((prev: FileData[]|any) => {
+        setProductImages((prev: FileData[] | any) => {
           return [
             ...prev,
             {
@@ -48,7 +50,6 @@ export default function CrateProductForm() {
       reader.readAsDataURL(image);
     }
   };
-
 
   const seleteDataSetting = (
     data: any,
@@ -140,6 +141,14 @@ export default function CrateProductForm() {
               />
             </FormComponents.Item>
           </div>
+          <FormComponents.Item
+            label="대표 이미지"
+            fieldKey={`mainImage`}
+            value={mainImage}
+          >
+            <FormComponents.Input className="hidden" />
+            <ImageUpload setImages={setMainImage} />
+          </FormComponents.Item>
         </div>
 
         <div id="productImage" className="flex-1 p-4">
@@ -216,7 +225,13 @@ export default function CrateProductForm() {
                     value={optionImages[index]}
                   >
                     <FormComponents.Input className="hidden" />
-                    <ImageUpload index={index} setImages={setOptionImages} />
+                    <ImageUpload
+                      setImages={(image: any) => {
+                        setOptionImages((prev: any) => {
+                          return { ...prev, [index]: image };
+                        });
+                      }}
+                    />
                   </FormComponents.Item>
                 </div>
               );
