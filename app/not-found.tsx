@@ -2,10 +2,10 @@ import Image from "next/image";
 import Link from "next/link";
 export default function NotFound() {
   return (
-    <div className="flex flex-col items-center justify-center flex-1 bg-slate-50">
+    <div className="flex flex-col items-center justify-center flex-1 bg-slate-50 min-w-[800px]">
       <h1 className="font text-5xl"><span className="text-lime-600">요청하신 페이지를</span> 찾을 수 없습니다.</h1>
       <div className="mt-[180px] text-center shadow-2xl p-20 rounded-xl">
-        <div className="flex justify-center relative">
+        <div className="flex justify-center relative shadow-2xl">
           <Image 
             src="/dogi.png" 
             width={150}
