@@ -27,12 +27,11 @@ export default function CrateProductForm() {
   const [optionImages, setOptionImages] = useState<StringMap>({});
   const [productImages, setProductImages] = useState<FileData[]>([]);
 
-  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleImageChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
     // 파일 리더 인스턴스 생성
-    const file = e.target.files?e.target.files[0]:null;
-    if (file) {
-      checkFileExtension(file);
+    const image = await checkFileExtension(e.target.files? e.target.files[0]:null);
+    if (image) {
       let reader = new FileReader();
       reader.onloadend = () => {
         setProductImages((prev: FileData[]|any) => {
@@ -40,13 +39,13 @@ export default function CrateProductForm() {
             ...prev,
             {
               id: Math.random(),
-              imageName: file.name,
+              imageName: image.name,
               file: reader.result,
             },
           ];
         });
       };
-      reader.readAsDataURL(file);
+      reader.readAsDataURL(image);
     }
   };
 

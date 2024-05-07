@@ -12,10 +12,9 @@ export default function ProfileImageEditor({
 }) {
   const submit = useProfileUpdate();
   const handleFileChange = async (e: ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?e.target.files[0]:null;
-    if (file) {
-      checkFileExtension(file);
-      submit(file);
+    const image = await checkFileExtension(e.target.files? e.target.files[0]:null);
+    if (image) {
+      submit(image);
     }
   };
 
