@@ -2,7 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-
 :root {
 }
 html {
@@ -12,8 +11,8 @@ body {
   background: #fff;
   height: 100%;
 }
-main{
-  flex:1;
+main {
+  flex: 1;
 }
 
 a {
@@ -24,4 +23,56 @@ input[type="number"]::-webkit-outer-spin-button,
 input[type="number"]::-webkit-inner-spin-button {
   -webkit-appearance: none; /* Hide spin buttons for WebKit browsers */
   appearance: none; /* Hide spin buttons for other browsers */
+}
+
+@keyframes shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  10%,
+  30%,
+  50%,
+  70%,
+  90% {
+    transform: translateX(-5px);
+  }
+  20%,
+  40%,
+  60%,
+  80% {
+    transform: translateX(5px);
+  }
+}
+
+.shake {
+  animation: shake 0.8s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+}
+
+/* 글로벌 styles.css 또는 tailwind.config.js 파일에 추가 */
+@keyframes bellShake {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  10% {
+    transform: rotate(-15deg);
+  }
+  20%,
+  40%,
+  60%,
+  80% {
+    transform: rotate(15deg);
+  }
+  30%,
+  50%,
+  70%,
+  90% {
+    transform: rotate(-15deg);
+  }
+}
+
+.bellShake {
+  animation: bellShake 1s ease-in-out both;
+  transform-origin: top center; /* 회전 축을 아이콘의 상단 중앙으로 설정 */
 }

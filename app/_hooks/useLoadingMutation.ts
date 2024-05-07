@@ -1,5 +1,6 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import useAlert from "../_hooks/useAlert";
+import { AlertStatus } from "../_components/block/Alert";
 
 const useLoadingMutation = (mutationFn: (...args: any[]) => any) => {
   const queryClient = useQueryClient();
@@ -13,10 +14,14 @@ const useLoadingMutation = (mutationFn: (...args: any[]) => any) => {
       queryClient.setQueryData(["isLoading"], false);
     },
     onSuccess: (res) => {
-      console.log(res);
+      if (res.message) {
+        alert(res.message, AlertStatus.Success);
+      }
     },
     onError: (err) => {
-      alert(err.message);
+      if (err.message) {
+        alert(err.message, AlertStatus.Error);
+      }
     },
   });
 };
