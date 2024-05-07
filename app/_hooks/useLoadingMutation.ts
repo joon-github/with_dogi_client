@@ -14,7 +14,7 @@ const useLoadingMutation = (mutationFn: (...args: any[]) => any) => {
       console.log(res);
     },
     onError: (err) => {
-      console.log(err);
+      alert(err.message)
     },
   });
 };

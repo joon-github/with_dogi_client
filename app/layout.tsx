@@ -5,6 +5,7 @@ import Loader from "./_components/block/Loader";
 import { NextUIProvider } from "@nextui-org/react";
 import Footer from "./_components/block/Footer";
 import { Jua } from "next/font/google";
+import Alert from "./_components/block/Alert";
 const jua = Jua({ subsets: ["latin"], weight: ["400"] });
 
 export const metadata: Metadata = {
@@ -25,6 +26,7 @@ export default function RootLayout({
             <div
               className={`h-screen flex flex-col`}
             >
+              <Alert/>
               {children}
               <Footer />
             </div>

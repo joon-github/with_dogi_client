@@ -1,4 +1,3 @@
-import Logo from "../../_components/block/Logo";
 import LoginForm from "./_components/LoginForm";
 import Link from "next/link";
 export default function Login() {

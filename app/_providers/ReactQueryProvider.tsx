@@ -25,6 +25,7 @@ function ReactQueryProcider({ children }: React.PropsWithChildren) {
         onError: (error) => {
           const responseError = error as unknown as ResponseType<unknown>;
           const isRequestError = responseError && "statusCode" in responseError;
+          // alert(isRequestError.message)
           if (isRequestError && responseError.statusCode === 403) {
             router.push("/login");
             alert("로그인 해주세요.");
