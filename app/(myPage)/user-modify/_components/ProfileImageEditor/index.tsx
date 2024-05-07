@@ -3,8 +3,7 @@ import { Image } from "@nextui-org/react";
 import { ChangeEvent } from "react";
 import { TbPencilMinus } from "react-icons/tb";
 import useProfileUpdate from "../../_fetcher/useProfileUpdate";
-import { baseUrl } from "@/app/_utils/baseUrl";
-// import useLoadingMutation from "@/app/_hooks/useLoadingMutation";
+import checkFileExtension from "@/app/_utils/checkImageFileExtension";
 
 export default function ProfileImageEditor({
   photoUrl,
@@ -12,13 +11,11 @@ export default function ProfileImageEditor({
   photoUrl: string | undefined;
 }) {
   const submit = useProfileUpdate();
-  // const { mutate: onSubmit, isSuccess } = useLoadingMutation(submit);
-  const handleFileChange = async (event: ChangeEvent<HTMLInputElement>) => {
-    const files = event.target.files;
-    const formData = new FormData();
-    if (files && files.length > 0) {
-      formData.append("file", files[0]);
-      submit(files[0]);
+  const handleFileChange = async (e: ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?e.target.files[0]:null;
+    if (file) {
+      checkFileExtension(file);
+      submit(file);
     }
   };
 

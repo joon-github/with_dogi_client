@@ -9,6 +9,8 @@ import useLoadingMutation from "@/app/_hooks/useLoadingMutation";
 import ImageUpload from "@/app/_components/block/ImageUpload";
 import { required } from "@/app/_utils/validations";
 import { Image } from "@nextui-org/react";
+import checkFileExtension from "@/app/_utils/checkImageFileExtension";
+
 
 interface FileData {
   id?: number;
@@ -28,9 +30,10 @@ export default function CrateProductForm() {
   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
     // 파일 리더 인스턴스 생성
-    let reader = new FileReader();
-    let file = e.target.files?e.target.files[0]:null;
+    const file = e.target.files?e.target.files[0]:null;
     if (file) {
+      checkFileExtension(file);
+      let reader = new FileReader();
       reader.onloadend = () => {
         setProductImages((prev: FileData[]|any) => {
           return [
