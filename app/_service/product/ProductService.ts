@@ -1,8 +1,16 @@
 import Service from "../Service";
-import { Brand } from "./product.entity";
+import { Brand, Product } from "./product.entity";
 
 export interface BrandRequest {
   brandName: string;
+}
+
+export interface GetProductQuery { 
+  offset: number;
+  limit: number;
+  productCode?: string;
+  categoryId?: number;
+  userId?: number;
 }
 
 class ProductService extends Service {
@@ -12,6 +20,16 @@ class ProductService extends Service {
 
   saveBrand(data: BrandRequest) {
     return this.http.post<BrandRequest, null>(`/product/brand`, data);
+  }
+
+  getProductList(query: GetProductQuery) {
+    let queryString = "";
+    Object.entries(query).forEach(([key, value]) => {
+      if (value) {
+        queryString += `${key}=${value}&`;
+      }
+    });
+    return this.http.get<Product[]>(`/product?${queryString}`);
   }
 
   saveProduct(formData: FormData) {
