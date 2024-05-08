@@ -1,49 +1,39 @@
 "use client";
-import { Link } from "@/app/_components/atom"
+import { Link, Table } from "@/app/_components/atom";
 import SubTitle from "../../_components/SubTitle";
 import { useMyProductList } from "@/app/_service/product/useProductService";
 import { Image } from "@nextui-org/react";
 
 export default function SellerProducts() {
-  const { data: productData, isSuccess } = useMyProductList();
-  console.log(productData);
+  const { data: productData, isPending } = useMyProductList();
   return (
     <>
       <SubTitle title="상품관리" />
       <div>
+        <button>
+          <Link href="/seller/product/create">상품 추가</Link>
+        </button>
         <div>
-          <button>
-            <Link href="/seller/product/create">상품 추가</Link>
-          </button>
-          <div>
-            {isSuccess &&
-              productData?.data?.map((product) => (
-                <Link
-                  key={product.productId}
-                  href={`/seller/product/${product.productId}`}
-                >
-                  <div
+          <Table
+            ariaLabelText="상품 리스트"
+            isLoading={isPending}
+            header={["이미지", "상품명", "금액"]}
+            body={productData?.data?.map((product) => {
+              return {
+                이미지: (
+                  <Image
                     key={product.productId}
-                    className="flex border border-slate-400 rounded-lg p-2 my-2"
-                  >
-                    <Image
-                      src={product.mainImageUrl || "/no-image.png"}
-                      alt={product.productName}
-                      width={100}
-                      height={100}
-                    />
-                    <div>
-                      <div className="text-base font-bold">
-                        {product.productName}
-                      </div>
-                      <div className="text-sm text-gray-500">
-                        {product.description}
-                      </div>
-                    </div>
-                  </div>
-                </Link>
-              ))}
-          </div>
+                    src={product.mainImageUrl || "/no-image.png"}
+                    alt={product.productName}
+                    width={140}
+                    height={140}
+                  />
+                ),
+                상품명: product.productName,
+                금액: product.price,
+              };
+            })}
+          />
         </div>
       </div>
     </>

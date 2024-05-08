@@ -7,7 +7,7 @@ import {
 } from "@tanstack/react-query";
 import { useRouter } from "next/navigation";
 import { ResponseType } from "../_service/Service";
-// import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 // import { ReactQueryStreamedHydration } from "@tanstack/react-query-next-experimental";
 
 function ReactQueryProcider({ children }: React.PropsWithChildren) {

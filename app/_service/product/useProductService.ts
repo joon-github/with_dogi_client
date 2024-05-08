@@ -36,7 +36,12 @@ interface AddProductFormData {
   brandId: string;
   [key: string]: string; // 다른 모든 동적 키를 위한 인덱스 시그니처
 }
-
+interface AddOption {
+  optionName: string;
+  addPrice: number;
+  stock: number;
+  file?: string;
+}
 export function useOnSubmitProductForm() {
   const onSubmit = async (data: AddProductFormData) => {
     const formData = new FormData();
@@ -55,12 +60,6 @@ export function useOnSubmitProductForm() {
     return response;
   };
 
-  interface AddOption {
-    optionName: string;
-    addPrice: number;
-    stock: number;
-    file?: string;
-  }
   function parseOptions(data: AddProductFormData): AddOption[] {
     const result: AddOption[] = [];
     Object.keys(data).forEach((key) => {
