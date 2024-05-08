@@ -4,7 +4,7 @@ import { useCategory } from "@/app/_service/category/useCategoryService";
 import { useMyBrand } from "@/app/_service/product/useProductService";
 import { useState } from "react";
 import { FaPlusCircle } from "react-icons/fa";
-import useOnSubmitProductForm from "../../_fetcher/useOnSubmitProductForm";
+import { useOnSubmitProductForm } from "@/app/_service/product/useProductService";
 import useLoadingMutation from "@/app/_hooks/useLoadingMutation";
 import ImageUpload from "@/app/_components/block/ImageUpload";
 import { required } from "@/app/_utils/validations";

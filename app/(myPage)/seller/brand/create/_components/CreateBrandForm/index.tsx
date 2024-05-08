@@ -1,7 +1,7 @@
 "use client";
 import FormComponents from "@/app/_components/block/Form";
 import { MdDriveFileRenameOutline } from "react-icons/md";
-import useOnSubmitBrandForm from "../../_fetcher/useOnSubmitBrandForm";
+import { useOnSubmitBrandForm } from "@/app/_service/product/useProductService";
 import useLoadingMutation from "@/app/_hooks/useLoadingMutation";
 
 export default function CrateBrandForm() {
