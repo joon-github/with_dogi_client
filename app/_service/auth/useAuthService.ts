@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import authQueryOptions from "./authQueryOptions";
 import { useRouter } from "next/navigation";
-import AuthService, {LoginRequest} from "./AuthService";
+import AuthService, {LoginRequest, SignupRequest} from "./AuthService";
 import { useQueryClient } from "@tanstack/react-query";
 
 export function useMyInfo() {
@@ -30,6 +30,7 @@ export function useOnSubmitLoginForm() {
     return res;
   };
   return onSubmit;
+}
 
 export function useOnSubmitSignupForm() {
   const login = useOnSubmitLoginForm();
@@ -43,5 +44,4 @@ export function useOnSubmitSignupForm() {
     }
   };
   return onSubmit;
-}
 }
