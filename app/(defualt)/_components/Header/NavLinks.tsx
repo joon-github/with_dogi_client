@@ -1,5 +1,5 @@
 "use client";
-import Link from "next/link";
+import { Link } from "@/app/_components/atom"
 import useGetLinkStyle from "@/app/_utils/getLinkStyle";
 
 export default function NavLinks() {

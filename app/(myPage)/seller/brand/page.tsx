@@ -1,5 +1,5 @@
 "use client";
-import Link from "next/link";
+import { Link } from "@/app/_components/atom"
 import SubTitle from "../../_components/SubTitle";
 import { useMyBrand } from "@/app/_service/product/useProductService";
 

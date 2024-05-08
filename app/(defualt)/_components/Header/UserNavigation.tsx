@@ -1,5 +1,5 @@
 "use client";
-import Link from "next/link";
+import { Link } from "@/app/_components/atom"
 import IconText from "../../../_components/block/IconText";
 import { SlUser } from "react-icons/sl";
 import { CiShoppingCart } from "react-icons/ci";

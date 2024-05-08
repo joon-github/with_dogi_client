@@ -1,5 +1,5 @@
 "use client";
-import Link from "next/link";
+import { Link } from "@/app/_components/atom"
 import SubTitle from "../../_components/SubTitle";
 import { useMyProductList } from "@/app/_service/product/useProductService";
 import { Image } from "@nextui-org/react";

@@ -6,6 +6,7 @@ import { NextUIProvider } from "@nextui-org/react";
 import Footer from "./_components/block/Footer";
 import { Jua } from "next/font/google";
 import Alert from "./_components/block/Alert";
+import PageMoveMentDetection from "./_components/PageMoveMentDetection";
 const jua = Jua({ subsets: ["latin"], weight: ["400"] });
 
 export const metadata: Metadata = {
@@ -23,11 +24,11 @@ export default function RootLayout({
       <ReactQueryProcider>
         <body className={jua.className}>
           <NextUIProvider>
-            <div className={`h-screen flex flex-col`}>
+            <PageMoveMentDetection>
               <Alert />
               {children}
               <Footer />
-            </div>
+            </PageMoveMentDetection>
           </NextUIProvider>
           <Loader />
         </body>

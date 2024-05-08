@@ -1,6 +1,6 @@
 "use client";
 import { useMyInfo } from "@/app/_service/auth/useAuthService";
-import Link from "next/link";
+import { Link } from "@/app/_components/atom"
 import Section from "./Section";
 import useGetLinkStyle from "@/app/_utils/getLinkStyle";
 

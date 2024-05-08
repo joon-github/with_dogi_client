@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Link from "next/link";
+import { Link } from "@/app/_components/atom"
 export default function NotFound() {
   return (
     <div className="flex flex-col items-center justify-center flex-1 bg-slate-50 min-w-[800px]">

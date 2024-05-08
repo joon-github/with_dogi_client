@@ -1,7 +1,7 @@
 "use client";
 import { Skeleton } from "@/app/_components/atom";
 import { useCategory } from "@/app/_service/category/useCategoryService";
-import Link from "next/link";
+import { Link } from "@/app/_components/atom"
 
 export default function Categories() {
   const { data: categories, isSuccess } = useCategory("product");

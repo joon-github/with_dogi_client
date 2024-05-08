@@ -1,5 +1,5 @@
 import LoginForm from "./_components/LoginForm";
-import Link from "next/link";
+import { Link } from "@/app/_components/atom"
 export default function Login() {
   return (
     <div>
