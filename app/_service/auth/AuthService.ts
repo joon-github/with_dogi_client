@@ -32,6 +32,10 @@ class AuthService extends Service {
     });
   }
 
+  logout() {
+    return this.http.post<null, null>("/auth/logout");
+  }
+
   signup(data: SignupRequest) {
     return this.http.post<SignupRequest, null>("/auth/signup", {
       email: data.email,
