@@ -10,8 +10,8 @@ export function useMyBrand() {
   return useQuery(productQueryOptions.myBrand());
 }
 
-export function useMyProductList() {
-  return useQuery(productQueryOptions.myProductList());
+export function useMyProductList(limit?: number, offset?: number) {
+  return useQuery(productQueryOptions.myProductList(limit, offset));
 }
 
 export function useOnSubmitBrandForm() {

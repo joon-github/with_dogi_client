@@ -12,9 +12,9 @@ const productQueryOptions = {
     queryFn: () => ProductService.getMyBrand(),
   }),
 
-  myProductList: () => ({
-    queryKey: ProductQueryKey.myProductList(),
-    queryFn: () => ProductService.getMyProductList(),
+  myProductList: (limit?: number, offset?: number) => ({
+    queryKey: [ProductQueryKey.myBrand(), limit, offset],
+    queryFn: () => ProductService.getMyProductList(limit, offset),
   }),
 };
 

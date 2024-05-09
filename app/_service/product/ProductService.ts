@@ -32,8 +32,10 @@ class ProductService extends Service {
     return this.http.get<Product[]>(`/product?${queryString}`);
   }
 
-  getMyProductList() {
-    return this.http.get<Product[]>(`/product/my`);
+  getMyProductList(limit?: number, offset?: number) {
+    return this.http.get<Product[]>(
+      `/product/my?limit=${limit}&offset=${offset}`
+    );
   }
 
   saveProduct(formData: FormData) {

@@ -3,6 +3,7 @@ export interface ResponseType<R> {
   statusCode: number;
   message: string | null;
   data: R;
+  [key: string]: any;
 }
 
 interface HTTPInstance {
