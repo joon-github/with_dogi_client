@@ -5,18 +5,17 @@ import { useMyProductList } from "@/app/_service/product/useProductService";
 import { Image } from "@nextui-org/react";
 
 export default function SellerProducts() {
-  const { data: productData, isPending } = useMyProductList();
+  const { data: productData } = useMyProductList();
   return (
     <>
       <SubTitle title="상품관리" />
-      <div>
+      <div className="h-full">
         <button>
           <Link href="/seller/product/create">상품 추가</Link>
         </button>
-        <div>
+        <div className="h-full">
           <Table
             ariaLabelText="상품 리스트"
-            isLoading={isPending}
             header={["이미지", "상품명", "금액"]}
             body={productData?.data?.map((product) => {
               return {

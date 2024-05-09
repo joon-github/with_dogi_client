@@ -10,13 +10,13 @@ import { useRouter } from "next/navigation";
 export default function LoginForm() {
   const submitLoginForm = useOnSubmitLoginForm();
   const { mutate: onSubmit, isPending } = useLoadingMutation(submitLoginForm);
-  const { data: loginStatus } = useLoginStatus();
-  const router = useRouter();
-  useEffect(() => {
-    if (loginStatus?.data) {
-      router.push("/user-modify");
-    }
-  },[loginStatus])
+  // const { data: loginStatus } = useLoginStatus();
+  // const router = useRouter();
+  // useEffect(() => {
+  //   if (loginStatus?.data) {
+  //     router.push("/user-modify");
+  //   }
+  // },[loginStatus])
   return (
     <FormComponents>
       <FormComponents.Form
