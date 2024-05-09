@@ -10,7 +10,7 @@ export default function AtomTable({
       <thead className="bg-gray-300">
         <tr>
           {header?.map((key: string, index: number) => (
-            <th key={index} className="py-2" className="min-w-fit text-nowrap">
+            <th key={index} className="min-w-fit text-nowrap py-2">
               {key}
             </th>
           ))}
