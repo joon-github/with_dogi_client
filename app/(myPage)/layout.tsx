@@ -13,10 +13,7 @@ export default function MyPageLayout({
       <div className="flex flex-1">
         <SideBar />
         <main
-          className="w-full py-8 px-[100px] overflow-y-auto"
-          style={{
-            height: "calc(100vh - 150px)",
-          }}
+          className="w-full py-8 px-[100px]"
         >
           {children}
         </main>

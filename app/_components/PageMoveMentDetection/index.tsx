@@ -11,7 +11,7 @@ export default function PageMoveMentDetection({ children }: { children: React.Re
   },[pathname,searchParams])
 
   return(
-    <div className={`h-screen flex flex-col`}>
+    <div className={`h-screen flex flex-col overflow-y-auto`}>
       {children}
     </div>
   )

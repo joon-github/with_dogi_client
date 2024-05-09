@@ -23,14 +23,14 @@ export default function RootLayout({
     <html lang="en">
       <ReactQueryProcider>
         <body className={jua.className}>
+          <Alert />
+          <Loader />
           <NextUIProvider>
             <PageMoveMentDetection>
-              <Alert />
               {children}
               <Footer />
             </PageMoveMentDetection>
           </NextUIProvider>
-          <Loader />
         </body>
       </ReactQueryProcider>
     </html>
