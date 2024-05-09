@@ -1,19 +1,19 @@
 import { Link } from "@/app/_components/atom";
 import SubTitle from "../../_components/SubTitle";
-import ProductListTabel from "./_components/ProductListTable"
-
+import ProductListTabel from "./_components/ProductListTable";
+import { Button } from "@/app/_components/atom";
 
 export default function SellerProducts() {
   return (
     <>
       <SubTitle title="상품관리" />
-      <div className="h-full">
-        <button>
-          <Link href="/seller/product/create">상품 추가</Link>
-        </button>
-        <div className="h-full">
-          <ProductListTabel />
+      <div className="flex flex-col gap-4 h-full">
+        <div>
+          <Button>
+            <Link href="/seller/product/create">상품 추가</Link>
+          </Button>
         </div>
+        <ProductListTabel />
       </div>
     </>
   );
