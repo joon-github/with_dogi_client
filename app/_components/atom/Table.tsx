@@ -1,5 +1,6 @@
 "use client";
 interface Body {
+  rowkey: string | number;
   [key: string]: string | React.ReactNode;
 }
 
