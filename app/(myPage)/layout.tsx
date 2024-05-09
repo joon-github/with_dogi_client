@@ -10,7 +10,7 @@ export default function MyPageLayout({
   return (
     <PrefetchHydration queries={[]}>
       <Header />
-      <div className="flex flex-1">
+      <div className="flex flex-1 pt-[83px]">
         <SideBar />
         <main
           className="w-full py-8 px-[100px]"
