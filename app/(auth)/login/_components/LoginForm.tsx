@@ -2,7 +2,7 @@
 import useLoadingMutation from "@/app/_hooks/useLoadingMutation";
 import FormComponents from "@/app/_components/block/Form";
 import { LuUser2, LuLock } from "react-icons/lu";
-import useOnSubmitLoginForm from "../_fetcher/useOnSubmitLoginForm";
+import {useOnSubmitLoginForm} from "@/app/_service/auth/useAuthService";
 import { emailValidation, required } from "@/app/_utils/validations";
 import { useLoginStatus } from "@/app/_service/auth/useAuthService";
 import { useEffect } from "react";

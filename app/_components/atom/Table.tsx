@@ -1,11 +1,3 @@
-import {
-  Table,
-  TableHeader,
-  TableColumn,
-  TableBody,
-  TableRow,
-  TableCell,
-} from "@nextui-org/react";
 
 export default function AtomTable({
   header,
@@ -14,25 +6,25 @@ export default function AtomTable({
   isLoading,
 }: any) {
   return (
-    <Table removeWrapper aria-label={ariaLabelText || "table"}>
-      <TableHeader>
+    <table aria-label={ariaLabelText || "table"}>
+      <thead>
         {header?.map((key: string, index: number) => (
-          <TableColumn key={index} align="end">
+          <th key={index}>
             {key}
-          </TableColumn>
+          </th>
         ))}
-      </TableHeader>
-      <TableBody>
+      </thead>
+      <tbody>
         {body?.map((item: any, index: number) => (
-          <TableRow key={index}>
+          <tr key={index}>
             {header.map((key: string) => (
-              <TableCell align="center" key={key}>
+              <td align="center" key={key}>
                 {item[key]}
-              </TableCell>
+              </td>
             ))}
-          </TableRow>
+          </tr>
         ))}
-      </TableBody>
-    </Table>
+      </tbody>
+    </table>
   );
 }
