@@ -10,9 +10,9 @@ export default function ProductListTable(){
       header={["이미지", "상품명", "금액"]}
       body={productData?.data?.map((product) => {
         return {
+          "rowkey": product.productId,
           이미지: (
             <Image
-              key={product.productId}
               src={product.mainImageUrl || "/no-image.png"}
               alt={product.productName}
               width={140}
