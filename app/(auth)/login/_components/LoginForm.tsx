@@ -4,19 +4,9 @@ import FormComponents from "@/app/_components/block/Form";
 import { LuUser2, LuLock } from "react-icons/lu";
 import {useOnSubmitLoginForm} from "@/app/_service/auth/useAuthService";
 import { emailValidation, required } from "@/app/_utils/validations";
-import { useLoginStatus } from "@/app/_service/auth/useAuthService";
-import { useEffect } from "react";
-import { useRouter } from "next/navigation";
 export default function LoginForm() {
   const submitLoginForm = useOnSubmitLoginForm();
   const { mutate: onSubmit, isPending } = useLoadingMutation(submitLoginForm);
-  // const { data: loginStatus } = useLoginStatus();
-  // const router = useRouter();
-  // useEffect(() => {
-  //   if (loginStatus?.data) {
-  //     router.push("/user-modify");
-  //   }
-  // },[loginStatus])
   return (
     <FormComponents>
       <FormComponents.Form
