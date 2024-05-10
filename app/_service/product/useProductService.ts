@@ -85,3 +85,12 @@ export function useOnSubmitProductForm() {
 
   return onSubmit;
 }
+
+export function useCheckOwner(productId: number) {
+  const { data } = useQuery(productQueryOptions.checkOwner(productId));
+  const router = useRouter();
+  console.log(data);
+  if (data && !data.data) {
+    router.back();
+  }
+}

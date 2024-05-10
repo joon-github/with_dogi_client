@@ -45,6 +45,10 @@ class ProductService extends Service {
       },
     });
   }
+
+  checkOwner(productId: number) {
+    return this.http.get<boolean>(`/product/check_owner/${productId}`);
+  }
 }
 
 // eslint-disable-next-line import/no-anonymous-default-export

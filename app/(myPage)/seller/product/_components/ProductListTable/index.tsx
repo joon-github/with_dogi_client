@@ -53,7 +53,7 @@ export default function ProductListTable() {
             ),
             수정: (
               <Button>
-                <Link href={`/seller/product/eidte/${product.productId}`}>
+                <Link href={`/seller/product/edite/${product.productId}`}>
                   수정
                 </Link>
               </Button>

@@ -16,6 +16,11 @@ const productQueryOptions = {
     queryKey: [ProductQueryKey.myBrand(), limit, offset],
     queryFn: () => ProductService.getMyProductList(limit, offset),
   }),
+
+  checkOwner: (productId: number) => ({
+    queryKey: ["checkOwner", productId],
+    queryFn: () => ProductService.checkOwner(productId),
+  }),
 };
 
 export default productQueryOptions;
