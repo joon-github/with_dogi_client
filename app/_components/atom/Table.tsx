@@ -1,4 +1,6 @@
 "use client";
+type HeadSize = "sm" | "md" | "lg";
+
 interface Body {
   rowkey: string | number;
   [key: string]: string | React.ReactNode;
@@ -9,6 +11,7 @@ interface AtomTableProps {
   body: Body[] | undefined;
   ariaLabelText?: string;
   rowKey?: number | string;
+  headSize?: HeadSize;
   onRowClick?: (rowKey: string | number) => {};
 }
 
@@ -17,7 +20,13 @@ export default function AtomTable({
   body,
   ariaLabelText,
   onRowClick,
+  headSize = "md",
 }: AtomTableProps) {
+  const headSizeMap = {
+    sm: "px-2 py-1",
+    md: "px-4 py-4",
+    lg: "px-6 py-6",
+  };
   return (
     <table
       aria-label={ariaLabelText || "table"}
@@ -28,7 +37,7 @@ export default function AtomTable({
           {header?.map((key: string, index: number) => (
             <th
               key={index}
-              className="min-w-fit text-nowrap py-4 px-4 border border-white"
+              className={`min-w-fit text-nowrap border border-white ${headSizeMap[headSize]}`}
             >
               {key}
             </th>
