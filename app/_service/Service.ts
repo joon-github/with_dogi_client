@@ -121,7 +121,6 @@ class Service {
               this.request<R, T>(method, url, config, body)
             );
           } catch (e) {
-            console.log("asdf", e);
             throw e;
           }
         },

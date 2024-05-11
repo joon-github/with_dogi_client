@@ -3,9 +3,9 @@ import ImageUpload from "@/app/_components/block/ImageUpload";
 import { useCategory } from "@/app/_service/category/useCategoryService";
 import { useMyBrand } from "@/app/_service/product/useProductService";
 import { required } from "@/app/_utils/validations";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-export default function ProductInfo() {
+export default function ProductInfo({ defaultValue }: { defaultValue?: any }) {
   const [mainImage, setMainImage] = useState<string>("");
   const { data: categories } = useCategory("product");
   const { data: brandData } = useMyBrand();
@@ -32,21 +32,32 @@ export default function ProductInfo() {
           fieldKey="productName"
           validation={required("상품 이름를 입력해 주세요.")}
         >
-          <FormComponents.Input maxLength={100} />
+          <FormComponents.Input
+            maxLength={100}
+            defaultValue={defaultValue.productName}
+          />
         </FormComponents.Item>
         <FormComponents.Item
           label="상품 설명"
           fieldKey="description"
           validation={required("상품 설명을 입력해 주세요.")}
         >
-          <FormComponents.Input type="textarea" maxLength={15} />
+          <FormComponents.Input
+            type="textarea"
+            maxLength={15}
+            defaultValue={defaultValue.description}
+          />
         </FormComponents.Item>
         <FormComponents.Item
           label="기본 금액"
           fieldKey="price"
           validation={required("금액를 입력해 주세요.")}
         >
-          <FormComponents.Input type="number" maxLength={15} />
+          <FormComponents.Input
+            type="number"
+            maxLength={15}
+            defaultValue={defaultValue.price}
+          />
         </FormComponents.Item>
         <div className="flex gap-4">
           <FormComponents.Item
@@ -56,6 +67,7 @@ export default function ProductInfo() {
             validation={required("카테고리를 선택해 주세요.")}
           >
             <FormComponents.Selects
+              defaultValue={defaultValue.categoryId}
               ariaLabel="카테고리"
               data={categories?.data?.map((item) => ({
                 id: item.categoryId,
@@ -77,6 +89,7 @@ export default function ProductInfo() {
             validation={required("브랜드를 선택해 주세요.")}
           >
             <FormComponents.Selects
+              defaultValue={defaultValue.brandId}
               ariaLabel="브랜드"
               data={seleteDataSetting(
                 brandData?.data,
@@ -94,7 +107,10 @@ export default function ProductInfo() {
           validation={required("대표 이미지를 등록해주세요.")}
         >
           <FormComponents.Input className="hidden" />
-          <ImageUpload setImages={setMainImage} />
+          <ImageUpload
+            setImages={setMainImage}
+            defaultValues={defaultValue.mainImageUrl}
+          />
         </FormComponents.Item>
       </div>
     </div>

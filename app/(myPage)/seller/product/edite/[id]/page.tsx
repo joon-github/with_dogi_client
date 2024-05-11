@@ -14,12 +14,22 @@ interface Props {
 export default function EditeProduct({ params }: Props) {
   const { id } = params;
   const { data, isSuccess } = useCheckOwner(Number(id));
-  console.log(data);
   return (
     <>
       <SubTitle title={`${id}번 상품 수정`} />
       <div className="flex flex-col gap-8">
-        <ProductForm sunmitButtonText="상품 정보 수정" use={["productInfo"]} />
+        <ProductForm
+          sunmitButtonText="상품 정보 수정"
+          use={["productInfo"]}
+          defaultValues={{
+            productName: data?.data?.productName,
+            description: data?.data?.description,
+            price: data?.data?.price,
+            brandId: data?.data?.brand.brandId,
+            categoryId: data?.data?.category.categoryId,
+            mainImageUrl: data?.data?.mainImageUrl,
+          }}
+        />
         <ProductForm
           sunmitButtonText="상품 설명 이미지 수정"
           use={["productImages"]}

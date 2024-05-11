@@ -12,12 +12,14 @@ interface Props {
   sunmitButtonText?: string;
   use?: Uses[];
   direction?: Direction;
+  defaultValues?: any;
 }
 
 export default function ProductForm({
   sunmitButtonText,
   use = ["productInfo", "option", "productImages"],
   direction,
+  defaultValues = false,
 }: Props) {
   const onSubmitProductForm = useOnSubmitProductForm();
   const { mutate: onSubmit, isPending } =
@@ -31,9 +33,15 @@ export default function ProductForm({
         isLoading={isPending}
         direction={direction}
       >
-        {use.includes("productInfo") ? <ProductInfo /> : null}
-        {use.includes("productImages") ? <ProductImages /> : null}
-        {use.includes("option") ? <Options /> : null}
+        {use.includes("productInfo") ? (
+          <ProductInfo defaultValue={defaultValues} />
+        ) : null}
+        {use.includes("productImages") ? (
+          <ProductImages defaultValue={defaultValues} />
+        ) : null}
+        {use.includes("option") ? (
+          <Options defaultValue={defaultValues} />
+        ) : null}
       </FormComponents.Form>
     </FormComponents>
   );

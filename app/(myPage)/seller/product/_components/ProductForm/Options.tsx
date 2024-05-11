@@ -16,7 +16,7 @@ interface Option {
   optionId: number;
 }
 
-export default function Options() {
+export default function Options({ defaultValue }: { defaultValue?: any }) {
   const { alert } = useAlert();
   const [addOption, setAddOption] = useState<Option[]>([{ optionId: 0 }]);
   const [optionImages, setOptionImages] = useState<StringMap>({});

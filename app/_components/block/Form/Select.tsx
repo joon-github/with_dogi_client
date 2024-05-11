@@ -1,4 +1,5 @@
-import React from "react";
+"use client";
+import React, { useEffect, useState } from "react";
 import { Select, SelectItem } from "@nextui-org/react";
 
 interface SelectData {
@@ -11,11 +12,21 @@ interface SelectProps extends React.SelectHTMLAttributes<HTMLSelectElement> {
   data: SelectData[] | undefined | []; // data 배열을 필수 prop으로 지정
   ariaLabel?: string;
   parentLabel?: string;
+  defaultValue?: number | string | undefined;
 }
 
 const Selects = React.forwardRef<HTMLSelectElement, SelectProps>(
   (props, ref) => {
     const { data, ariaLabel, ...rest } = props;
+    const [selectedKeys, setSelectedKeys] = useState<
+      string | number | undefined
+    >(undefined);
+
+    useEffect(() => {
+      if (props.defaultValue) {
+        setSelectedKeys(props.defaultValue);
+      }
+    }, [props.defaultValue]);
     const renderOptions = (
       items: SelectData[],
       parentLabel: string = ""
@@ -38,16 +49,25 @@ const Selects = React.forwardRef<HTMLSelectElement, SelectProps>(
       });
     };
     const etc = { ...rest } as any;
+    const Options = data ? renderOptions(data) : [];
+
     return (
       <Select
         ref={ref}
         {...etc}
+        selectedKeys={[selectedKeys]}
         aria-label={ariaLabel}
+        onChange={(event) => {
+          setSelectedKeys(event.target.value);
+        }}
         style={{
           background: "white",
         }}
       >
-        {data ? renderOptions(data) : []}
+        {Options}
+        <SelectItem key={999} value={"test"}>
+          test
+        </SelectItem>
       </Select>
     );
   }

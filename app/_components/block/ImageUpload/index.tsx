@@ -1,14 +1,23 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { CiImageOn } from "react-icons/ci";
 import ImageRemove from "../ImageRemove";
 import useCheckImageFileExtension from "@/app/_utils/checkImageFileExtension";
 interface Props {
+  defaultValues?: string | boolean;
   setImages: any;
 }
 
-export default function ImageUpload({ setImages }: Props) {
+export default function ImageUpload({
+  defaultValues = false,
+  setImages,
+}: Props) {
   const checkFileExtension = useCheckImageFileExtension();
   const [imagePreviewUrl, setImagePreviewUrl] = useState<any>("");
+  useEffect(() => {
+    if (defaultValues) {
+      setImagePreviewUrl(defaultValues);
+    }
+  }, [defaultValues]);
   const handleImageChange = async (e: any) => {
     e.preventDefault();
     // 파일 리더 인스턴스 생성

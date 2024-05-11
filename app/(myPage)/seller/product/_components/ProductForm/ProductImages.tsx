@@ -12,7 +12,11 @@ interface FileData {
   file: string;
 }
 
-export default function ProductImages() {
+export default function ProductImages({
+  defaultValue,
+}: {
+  defaultValue?: any;
+}) {
   const checkFileExtension = useCheckImageFileExtension();
   const [productImages, setProductImages] = useState<FileData[]>([]);
 

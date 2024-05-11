@@ -32,7 +32,6 @@ export default function UserInfoForm({
   submitButtonLabel,
   defaultValues = false,
   use = ["email", "password", "name", "phone", "address", "detail"],
-  isLoaded = false,
   direction,
   children,
 }: Porps) {
