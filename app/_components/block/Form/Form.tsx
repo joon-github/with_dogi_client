@@ -23,10 +23,12 @@ export default function Form({
 }: Props) {
   const formContext = useContext(FormContext);
   const handleSubmit = formContext?.handleSubmit;
-
+  const onSubmitProps = {
+    ...(handleSubmit ? { onSubmit: handleSubmit(onSubmit) } : {}),
+  };
   return (
     <form
-      onSubmit={handleSubmit(onSubmit)}
+      {...onSubmitProps}
       className={
         direction === Direction.ROW
           ? "flex flex-row gap-4"
