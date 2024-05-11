@@ -8,6 +8,7 @@ export default function ProductListTable() {
   const [currentPage, setCurrentPage] = useState(1);
   const count = 8;
   const { data: productData } = useMyProductList(count, currentPage);
+
   return (
     <div className="flex flex-col gap-4">
       <Table

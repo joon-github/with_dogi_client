@@ -8,8 +8,8 @@ import { useOnSubmitProductForm } from "@/app/_service/product/useProductService
 import useLoadingMutation from "@/app/_hooks/useLoadingMutation";
 import ImageUpload from "@/app/_components/block/ImageUpload";
 import { required } from "@/app/_utils/validations";
-import { Image } from "@nextui-org/react";
 import checkFileExtension from "@/app/_utils/checkImageFileExtension";
+import ImageRemove from "@/app/_components/block/ImageRemove";
 
 interface FileData {
   id?: number;
@@ -164,11 +164,15 @@ export default function CrateProductForm() {
                 {productImages.map((item: FileData) => (
                   <div key={item.id} className="flex flex-col gap-2 w-[120px]">
                     <div className="h-[120px] overflow-scroll">
-                      <Image
-                        src={item.file}
-                        alt="image"
-                        width={100}
-                        height={100}
+                      <ImageRemove
+                        deleteImage={() => {
+                          setProductImages(
+                            productImages.filter(
+                              (image: FileData) => image.id !== item.id
+                            )
+                          );
+                        }}
+                        imagePreviewUrl={item.file}
                       />
                     </div>
                     <div className="text-sm truncate w-[120px]">

@@ -1,7 +1,8 @@
 import { Image } from "@nextui-org/react";
 import { useState } from "react";
+import { BsTrash3 } from "react-icons/bs";
 import { CiImageOn } from "react-icons/ci";
-
+import ImageRemove from "../ImageRemove";
 interface Props {
   setImages: any;
 }
@@ -22,16 +23,24 @@ export default function ImageUpload({ setImages }: Props) {
       reader.readAsDataURL(file);
     }
   };
+  const deleteImage = (e: any) => {
+    e.preventDefault();
+    setImages("");
+    setImagePreviewUrl("");
+  };
   return (
     <label className="w-full cursor-pointer flex items-center">
       <input type="file" className="hidden" onChange={handleImageChange} />
       {imagePreviewUrl ? (
         <div className="flex items-center justify-center w-full h-[200px] overflow-scroll">
-          <Image width={100} height={100} src={imagePreviewUrl} alt="이미지" />
+          <ImageRemove
+            deleteImage={deleteImage}
+            imagePreviewUrl={imagePreviewUrl}
+          />
         </div>
       ) : (
         <div className="flex items-center gap-2 text-cyan-700 text-nowrap">
-          <span className="">이미지 추가</span>
+          <span>이미지 추가</span>
           <CiImageOn size={40} />
         </div>
       )}
