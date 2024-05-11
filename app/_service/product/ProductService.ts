@@ -47,7 +47,7 @@ class ProductService extends Service {
   }
 
   checkOwner(productId: number) {
-    return this.http.get<boolean>(`/product/check_owner/${productId}`);
+    return this.http.get<Product>(`/product/my/${productId}`);
   }
 }
 

@@ -11,7 +11,7 @@ import FormComponents from "@/app/_components/block/Form";
 import AddressSearch from "@/app/_components/block/AddressSearch";
 import { UseMutationResult } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
-import { Direction } from "../block/Form/Form";
+import { Direction } from "@/app/_components/block/Form/Form";
 
 interface Address {
   address: string;

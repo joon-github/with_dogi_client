@@ -87,10 +87,12 @@ export function useOnSubmitProductForm() {
 }
 
 export function useCheckOwner(productId: number) {
-  const { data } = useQuery(productQueryOptions.checkOwner(productId));
+  const { data, isError, isSuccess } = useQuery(
+    productQueryOptions.checkOwner(productId)
+  );
   const router = useRouter();
-  console.log(data);
-  if (data && !data.data) {
+  if (isError) {
     router.back();
   }
+  return { data, isSuccess };
 }

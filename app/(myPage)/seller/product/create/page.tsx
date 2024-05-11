@@ -1,13 +1,11 @@
 import SubTitle from "@/app/(myPage)/_components/SubTitle";
-import CrateProductForm from "./_components/CreateProductForm";
+import ProductForm from "../_components/ProductForm";
 
 export default function CreateProduct() {
   return (
     <>
-      <SubTitle title="상품추가" />
-      <div>
-        <CrateProductForm />
-      </div>
+      <SubTitle title="상품 추가" />
+      <ProductForm sunmitButtonText="상품 추가" />
     </>
   );
 }

@@ -40,16 +40,14 @@ const Pagination: React.FC<Props> = ({
     <nav>
       <ul className="flex items-center justify-center gap-1">
         {pageChunk > 0 && (
-          <li className="px-1">
-            <button onClick={jumpToFirst}>{"<<"}</button>
+          <li className="px-1" onClick={jumpToFirst}>
+            {"<<"}
           </li>
         )}
 
         {pageChunk > 0 && (
-          <li className="px-1">
-            <button onClick={() => changePageChunk(pageChunk - 1)}>
-              {"<"}
-            </button>
+          <li className="px-1" onClick={() => changePageChunk(pageChunk - 1)}>
+            {"<"}
           </li>
         )}
 
@@ -63,23 +61,22 @@ const Pagination: React.FC<Props> = ({
               page === currentPage
                 ? "bg-gray-200"
                 : "bg-white hover:bg-gray-200"
-            } rounded-md px-3 py-1`}
+            } rounded-md px-3 py-1 cursor-pointer`}
+            onClick={() => setCurrentPage(page)}
           >
-            <button onClick={() => setCurrentPage(page)}>{page}</button>
+            {page}
           </li>
         ))}
 
         {endPage < totalPages && (
-          <li className="px-1">
-            <button onClick={() => changePageChunk(pageChunk + 1)}>
-              {" > "}
-            </button>
+          <li className="px-1" onClick={() => changePageChunk(pageChunk + 1)}>
+            {" > "}
           </li>
         )}
 
         {endPage < totalPages && (
-          <li className="px-1">
-            <button onClick={jumpToLast}>{">>"}</button>
+          <li className="px-1" onClick={jumpToLast}>
+            {">>"}
           </li>
         )}
       </ul>

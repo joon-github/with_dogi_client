@@ -28,12 +28,13 @@ export default function ProductListTable() {
             상품명: product.productName,
             상품코드: product.productCode,
             이미지: (
-              <Image
-                src={product.mainImageUrl || "/no-image.png"}
-                alt={product.productName}
-                width={140}
-                height={140}
-              />
+              <div className="h-full">
+                <Image
+                  src={product.mainImageUrl || "/no-image.png"}
+                  alt={product.productName}
+                  style={{ objectFit: "cover" }}
+                />
+              </div>
             ),
             금액: product.price + "원",
             카테고리: product.category.categoryName,
