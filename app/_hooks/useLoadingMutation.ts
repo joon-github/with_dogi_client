@@ -1,17 +1,18 @@
-import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { useMutation } from "@tanstack/react-query";
 import useAlert from "../_hooks/useAlert";
 import { AlertStatus } from "../_components/block/Alert";
-
+import { useSetRecoilState } from "recoil";
+import { loaderState } from "@/app/Store/loaderAtom";
 const useLoadingMutation = (mutationFn: (...args: any[]) => any) => {
-  const queryClient = useQueryClient();
   const { alert } = useAlert();
+  const setIsloading = useSetRecoilState(loaderState);
   return useMutation({
     mutationFn: async (...args) => {
-      queryClient.setQueryData(["isLoading"], true);
+      setIsloading(true);
       return await mutationFn(...args);
     },
     onSettled: () => {
-      queryClient.setQueryData(["isLoading"], false);
+      setIsloading(false);
     },
     onSuccess: (res) => {
       if (res.message) {

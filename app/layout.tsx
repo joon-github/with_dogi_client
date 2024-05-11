@@ -7,6 +7,7 @@ import Footer from "./_components/block/Footer";
 import { Jua } from "next/font/google";
 import Alert from "./_components/block/Alert";
 import PageMoveMentDetection from "./_components/PageMoveMentDetection";
+import RecoilProvider from "./_providers/RecoilProvider";
 const jua = Jua({ subsets: ["latin"], weight: ["400"] });
 
 export const metadata: Metadata = {
@@ -21,18 +22,20 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <ReactQueryProcider>
-        <body className={jua.className}>
-          <Alert />
-          <Loader />
-          <NextUIProvider>
-            <PageMoveMentDetection>
-              {children}
-              <Footer />
-            </PageMoveMentDetection>
-          </NextUIProvider>
-        </body>
-      </ReactQueryProcider>
+      <RecoilProvider>
+        <ReactQueryProcider>
+          <body className={jua.className}>
+            <Alert />
+            <Loader />
+            <NextUIProvider>
+              <PageMoveMentDetection>
+                {children}
+                <Footer />
+              </PageMoveMentDetection>
+            </NextUIProvider>
+          </body>
+        </ReactQueryProcider>
+      </RecoilProvider>
     </html>
   );
 }

@@ -8,10 +8,13 @@ import {
 import { useRouter } from "next/navigation";
 import { ResponseType } from "../_service/Service";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import useAlert from "../_hooks/useAlert";
+import { AlertStatus } from "../_components/block/Alert";
 // import { ReactQueryStreamedHydration } from "@tanstack/react-query-next-experimental";
 
 function ReactQueryProcider({ children }: React.PropsWithChildren) {
   const router = useRouter();
+  const { alert } = useAlert();
   const [queryClient] = React.useState(
     new QueryClient({
       defaultOptions: {
@@ -27,7 +30,7 @@ function ReactQueryProcider({ children }: React.PropsWithChildren) {
           const isRequestError = responseError && "statusCode" in responseError;
           if (isRequestError && responseError.statusCode === 403) {
             router.push("/login");
-            alert("로그인 해주세요.");
+            alert("로그인 해주세요.", AlertStatus.Error);
           }
         },
       }),

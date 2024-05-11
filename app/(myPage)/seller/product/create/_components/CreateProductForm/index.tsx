@@ -3,13 +3,16 @@ import FormComponents from "@/app/_components/block/Form";
 import { useCategory } from "@/app/_service/category/useCategoryService";
 import { useMyBrand } from "@/app/_service/product/useProductService";
 import { useState } from "react";
-import { FaPlusCircle } from "react-icons/fa";
+import { FaMinusCircle, FaPlusCircle } from "react-icons/fa";
 import { useOnSubmitProductForm } from "@/app/_service/product/useProductService";
 import useLoadingMutation from "@/app/_hooks/useLoadingMutation";
 import ImageUpload from "@/app/_components/block/ImageUpload";
 import { required } from "@/app/_utils/validations";
-import checkFileExtension from "@/app/_utils/checkImageFileExtension";
+import useCheckImageFileExtension from "@/app/_utils/checkImageFileExtension";
 import ImageRemove from "@/app/_components/block/ImageRemove";
+import { Button } from "@/app/_components/atom";
+import useAlert from "@/app/_hooks/useAlert";
+import { AlertStatus } from "@/app/_components/block/Alert";
 
 interface FileData {
   id?: number;
@@ -20,6 +23,8 @@ interface StringMap {
   [key: string]: string;
 }
 export default function CrateProductForm() {
+  const { alert } = useAlert();
+  const checkFileExtension = useCheckImageFileExtension();
   const { data: categories } = useCategory("product");
   const { data: brandData } = useMyBrand();
   const [addOption, setAddOption] = useState<StringMap[]>([{}]);
@@ -71,6 +76,15 @@ export default function CrateProductForm() {
     useLoadingMutation(onSubmitProductForm);
   const onClickAddOption = () => {
     setAddOption([...addOption, {}]);
+  };
+  const onClickRemoveOption = (index: number) => {
+    if (index === 0) {
+      alert("옵션을 모두 삭제할 수 없습니다.", AlertStatus.Error);
+      return;
+    }
+    const newOption = [...addOption];
+    newOption.splice(index, 1);
+    setAddOption(newOption);
   };
   return (
     <FormComponents>
@@ -237,6 +251,16 @@ export default function CrateProductForm() {
                       }}
                     />
                   </FormComponents.Item>
+                  <div className="flex">
+                    <Button
+                      type="button"
+                      onClick={() => onClickRemoveOption(index)}
+                    >
+                      <div className="flex h-[38px] items-center justify-center">
+                        <FaMinusCircle size={24} />
+                      </div>
+                    </Button>
+                  </div>
                 </div>
               );
             })}

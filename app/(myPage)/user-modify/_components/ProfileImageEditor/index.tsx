@@ -3,16 +3,19 @@ import { Image } from "@nextui-org/react";
 import { ChangeEvent } from "react";
 import { TbPencilMinus } from "react-icons/tb";
 import useProfileUpdate from "../../_fetcher/useProfileUpdate";
-import checkFileExtension from "@/app/_utils/checkImageFileExtension";
+import useCheckImageFileExtension from "@/app/_utils/checkImageFileExtension";
 
 export default function ProfileImageEditor({
   photoUrl,
 }: {
   photoUrl: string | undefined;
 }) {
+  const checkFileExtension = useCheckImageFileExtension();
   const submit = useProfileUpdate();
   const handleFileChange = async (e: ChangeEvent<HTMLInputElement>) => {
-    const image = await checkFileExtension(e.target.files? e.target.files[0]:null);
+    const image = await checkFileExtension(
+      e.target.files ? e.target.files[0] : null
+    );
     if (image) {
       submit(image);
     }

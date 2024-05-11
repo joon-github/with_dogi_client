@@ -1,18 +1,21 @@
-"use client"
-import { usePathname, useSearchParams } from 'next/navigation';
-import { useQueryClient } from "@tanstack/react-query";
-import { useEffect } from 'react';
-export default function PageMoveMentDetection({ children }: { children: React.ReactNode }) {
-  const queryClient = useQueryClient();
+"use client";
+import { usePathname, useSearchParams } from "next/navigation";
+import { useEffect } from "react";
+import { useSetRecoilState } from "recoil";
+import { loaderState } from "@/app/Store/loaderAtom";
+export default function PageMoveMentDetection({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   const pathname = usePathname();
   const searchParams = useSearchParams();
+  const setIsloading = useSetRecoilState(loaderState);
   useEffect(() => {
-    queryClient.setQueryData(["isLoading"], false);
-  },[pathname,searchParams])
+    setIsloading(false);
+  }, [pathname, searchParams]);
 
-  return(
-    <div className={`h-screen flex flex-col overflow-y-auto`}>
-      {children}
-    </div>
-  )
+  return (
+    <div className={`h-screen flex flex-col overflow-y-auto`}>{children}</div>
+  );
 }

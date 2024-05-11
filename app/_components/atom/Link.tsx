@@ -1,10 +1,11 @@
 "use client";
 import Link from "next/link";
-import { useQueryClient } from "@tanstack/react-query";
+import { useSetRecoilState } from "recoil";
+import { loaderState } from "@/app/Store/loaderAtom";
 export default function AtomLink(props: any) {
-  const queryClient = useQueryClient();
+  const setIsloading = useSetRecoilState(loaderState);
   const showLoader = () => {
-    queryClient.setQueryData(["isLoading"], true);
+    setIsloading(true);
   };
   return (
     <Link {...props} onClick={showLoader}>

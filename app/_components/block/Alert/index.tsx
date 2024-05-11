@@ -1,29 +1,20 @@
 "use client";
-import { useQuery, useQueryClient } from "@tanstack/react-query";
+import { alertState } from "@/app/Store/alertAtom";
 import { FaRegBell } from "react-icons/fa";
-
+import { useRecoilState } from "recoil";
 export enum AlertStatus {
   Success = "success",
   Error = "error",
 }
 
 export default function Alert() {
-  const queryClient = useQueryClient();
-  const { data: alert } = useQuery({
-    queryKey: ["alert"],
-    queryFn: () => {
-      return {
-        isShow: false,
-        message: "",
-        status: AlertStatus.Success,
-      };
-    },
-    staleTime: Infinity,
-  });
+  const [alert, setAlert] = useRecoilState(alertState);
+
   const closeAlert = () => {
-    queryClient.setQueryData(["alert"], {
+    setAlert({
       isShow: false,
       message: "",
+      status: AlertStatus.Success,
     });
   };
   const borderColor = {
@@ -40,7 +31,7 @@ export default function Alert() {
   };
   return (
     <div
-      className={`absolute inset-x-0 inset-y-0 z-50 flex justify-center ${
+      className={`absolute inset-x-0 inset-y-0 z-[999999] flex justify-center ${
         alert?.isShow ? "" : "hidden"
       }`}
       onClick={closeAlert}

@@ -1,20 +1,21 @@
 "use client";
-import { useQueryClient } from "@tanstack/react-query";
 import { AlertStatus } from "../_components/block/Alert";
-
+import { useSetRecoilState } from "recoil";
+import { alertState } from "../Store/alertAtom";
 export default function useAlert() {
-  const queryClient = useQueryClient();
+  const setAlert = useSetRecoilState(alertState);
   return {
     alert: (message: string, status: AlertStatus) => {
-      queryClient.setQueryData(["alert"], {
+      setAlert({
         isShow: true,
         message,
         status,
       });
       setTimeout(() => {
-        queryClient.setQueryData(["alert"], {
+        setAlert({
           isShow: false,
           message: "",
+          status: "",
         });
       }, 2000);
     },

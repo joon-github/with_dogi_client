@@ -1,19 +1,21 @@
-import { Image } from "@nextui-org/react";
 import { useState } from "react";
-import { BsTrash3 } from "react-icons/bs";
 import { CiImageOn } from "react-icons/ci";
 import ImageRemove from "../ImageRemove";
+import useCheckImageFileExtension from "@/app/_utils/checkImageFileExtension";
 interface Props {
   setImages: any;
 }
 
 export default function ImageUpload({ setImages }: Props) {
+  const checkFileExtension = useCheckImageFileExtension();
   const [imagePreviewUrl, setImagePreviewUrl] = useState<any>("");
-  const handleImageChange = (e: any) => {
+  const handleImageChange = async (e: any) => {
     e.preventDefault();
     // 파일 리더 인스턴스 생성
     let reader = new FileReader();
-    let file = e.target.files[0];
+    const file = await checkFileExtension(
+      e.target.files ? e.target.files[0] : null
+    );
     if (file) {
       reader.onloadend = () => {
         setImages(reader.result);
