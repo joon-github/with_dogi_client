@@ -25,7 +25,7 @@ export default function ProductInfo() {
   };
   return (
     <div>
-      <div id="product" className="flex-1 p-4">
+      <div id="product" className="flex-1">
         <h3 className="text-lg font-bold mb-4">상품 정보</h3>
         <FormComponents.Item
           label="상품 이름"
@@ -91,6 +91,7 @@ export default function ProductInfo() {
           label="대표 이미지"
           fieldKey={`mainImage`}
           value={mainImage}
+          validation={required("대표 이미지를 등록해주세요.")}
         >
           <FormComponents.Input className="hidden" />
           <ImageUpload setImages={setMainImage} />

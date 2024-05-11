@@ -41,7 +41,7 @@ export default function ProductImages() {
   };
   return (
     <div>
-      <div id="productImage" className="flex-1 p-4">
+      <div id="productImage" className="flex-1">
         <div className="flex justify-between items-center mb-4">
           <h3 className="text-lg font-bold">상품 설명 이미지</h3>
           <label className="cursor-pointer w-fit h-12 border rounded-md bg-green-100 flex items-center justify-center gap-2 px-4">
