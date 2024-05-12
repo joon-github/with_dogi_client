@@ -18,16 +18,16 @@ interface Props {
 
 export default function EditeProduct({ params }: Props) {
   const { id } = params;
-  const { data, isSuccess } = useMyProduct(Number(id));
-  const submit = useModifyProduct(Number(id));
-  const mutation = useLoadingMutation(submit);
+  const { data } = useMyProduct(Number(id));
+  const productInfoSubmit = useModifyProduct(Number(id));
+  const productInfoMutation = useLoadingMutation(productInfoSubmit);
   return (
     <>
       <SubTitle title={`${id}번 상품 수정`} />
       <h3 className="text-lg font-bold mb-4">상품 정보</h3>
       <ProductForm
         sunmitButtonText="상품 이름 수정"
-        mutation={mutation}
+        mutation={productInfoMutation}
         use={["productName"]}
         direction={Direction.ROW}
         defaultValues={{
@@ -36,7 +36,7 @@ export default function EditeProduct({ params }: Props) {
       />
       <ProductForm
         sunmitButtonText="상품 설명 수정"
-        mutation={mutation}
+        mutation={productInfoMutation}
         use={["description"]}
         direction={Direction.ROW}
         defaultValues={{
@@ -45,7 +45,7 @@ export default function EditeProduct({ params }: Props) {
       />
       <ProductForm
         sunmitButtonText="상품 금액 수정"
-        mutation={mutation}
+        mutation={productInfoMutation}
         use={["price"]}
         direction={Direction.ROW}
         defaultValues={{
@@ -54,7 +54,7 @@ export default function EditeProduct({ params }: Props) {
       />
       <ProductForm
         sunmitButtonText="카테고리 수정"
-        mutation={mutation}
+        mutation={productInfoMutation}
         use={["category"]}
         direction={Direction.ROW}
         defaultValues={{
@@ -63,11 +63,21 @@ export default function EditeProduct({ params }: Props) {
       />
       <ProductForm
         sunmitButtonText="브랜드 수정"
-        mutation={mutation}
+        mutation={productInfoMutation}
         use={["brand"]}
         direction={Direction.ROW}
         defaultValues={{
           brandId: data?.data?.brand.brandId,
+        }}
+      />
+
+      <ProductForm
+        sunmitButtonText="상품 이미지 변경"
+        mutation={productInfoMutation}
+        use={["mainImage"]}
+        direction={Direction.ROW}
+        defaultValues={{
+          mainImageUrl: data?.data?.mainImageUrl,
         }}
       />
       {/* <ProductForm

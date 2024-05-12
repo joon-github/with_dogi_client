@@ -103,6 +103,7 @@ export function useModifyProduct(productId: number) {
     const res = await ProductService.modifyProduct(productId, data);
     if (res.statusCode === 200) {
       queryClient.invalidateQueries({ queryKey: ["myProduct", productId] });
+      queryClient.invalidateQueries({ queryKey: [ProductQueryKey.myBrand()] });
     }
     return res;
   };
