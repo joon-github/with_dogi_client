@@ -96,3 +96,12 @@ export function useCheckOwner(productId: number) {
   }
   return { data, isSuccess };
 }
+
+export function useModifyProduct(productId: number) {
+  const onSubmit = async (data: any) => {
+    const res = await ProductService.modifyProduct(productId, data);
+    return res;
+  };
+
+  return onSubmit;
+}

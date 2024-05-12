@@ -43,15 +43,15 @@ export default function UserInfoForm({
   const [addressDetail, setAddressDetail] = useState(
     defaultValues?.detail || ""
   );
-  useEffect(() => {
-    if (defaultValues) {
-      setAddress({
-        address: defaultValues?.address,
-        zonecode: defaultValues?.zonecode,
-      });
-      setAddressDetail(defaultValues?.detail);
-    }
-  }, [defaultValues]);
+  // useEffect(() => {
+  //   if (defaultValues) {
+  //     setAddress({
+  //       address: defaultValues?.address,
+  //       zonecode: defaultValues?.zonecode,
+  //     });
+  //     setAddressDetail(defaultValues?.detail);
+  //   }
+  // }, [defaultValues]);
   return (
     <>
       <FormComponents>

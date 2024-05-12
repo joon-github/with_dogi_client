@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { FormContext } from ".";
 
 interface Props {
@@ -23,12 +23,13 @@ export default function Item({
   className = "",
   children,
 }: Props) {
-  const data = React.useContext(FormContext);
+  const data = useContext(FormContext);
   useEffect(() => {
     if (value) {
       data?.setValue(fieldKey, value);
     }
   }, [value, fieldKey, data]);
+
   const register = data?.register;
   const errors = data?.errors;
   const childProps = register
@@ -60,7 +61,7 @@ export default function Item({
           {icon}
           <span>{label}</span>
         </label>
-        {childWithProps}
+        <div className="text-gray-600 font-light w-full">{childWithProps}</div>
       </div>
       <div className="h-6">
         {errors?.[fieldKey] && (

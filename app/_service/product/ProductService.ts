@@ -49,6 +49,10 @@ class ProductService extends Service {
   checkOwner(productId: number) {
     return this.http.get<Product>(`/product/my/${productId}`);
   }
+
+  modifyProduct(productId: number, data: any) {
+    return this.http.patch<any, null>(`/product/${productId}`, data);
+  }
 }
 
 // eslint-disable-next-line import/no-anonymous-default-export
