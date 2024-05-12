@@ -46,7 +46,7 @@ class ProductService extends Service {
     });
   }
 
-  checkOwner(productId: number) {
+  myProduct(productId: number) {
     return this.http.get<Product>(`/product/my/${productId}`);
   }
 

@@ -1,7 +1,7 @@
 "use client";
 
 import {
-  useCheckOwner,
+  useMyProduct,
   useModifyProduct,
 } from "@/app/_service/product/useProductService";
 import ProductForm from "../../_components/ProductForm";
@@ -18,7 +18,7 @@ interface Props {
 
 export default function EditeProduct({ params }: Props) {
   const { id } = params;
-  const { data, isSuccess } = useCheckOwner(Number(id));
+  const { data, isSuccess } = useMyProduct(Number(id));
   const submit = useModifyProduct(Number(id));
   const mutation = useLoadingMutation(submit);
   return (

@@ -17,9 +17,9 @@ const productQueryOptions = {
     queryFn: () => ProductService.getMyProductList(limit, offset),
   }),
 
-  checkOwner: (productId: number) => ({
-    queryKey: ["checkOwner", productId],
-    queryFn: () => ProductService.checkOwner(productId),
+  myProduct: (productId: number) => ({
+    queryKey: ["myProduct", productId],
+    queryFn: () => ProductService.myProduct(productId),
   }),
 };
 

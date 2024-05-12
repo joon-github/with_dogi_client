@@ -42,7 +42,11 @@ const Selects = React.forwardRef<HTMLSelectElement, SelectProps>(
 
         if (!item.children || item.children.length === 0) {
           return (
-            <SelectItem key={item.id} value={item.value}>
+            <SelectItem
+              key={item.id}
+              value={item.value}
+              className="text-gray-600 w-full"
+            >
               {newLabel}
             </SelectItem>
           );
@@ -63,16 +67,13 @@ const Selects = React.forwardRef<HTMLSelectElement, SelectProps>(
         aria-label={ariaLabel}
         onChange={(event) => {
           setSelectedKeys(event.target.value);
-          context?.setValue(fieldKey, event.target.value);
+          context?.setValue(fieldKey, Number(event.target.value));
         }}
         style={{
           background: "white",
         }}
       >
         {Options}
-        <SelectItem key={999} value={"test"}>
-          test
-        </SelectItem>
       </Select>
     );
   }

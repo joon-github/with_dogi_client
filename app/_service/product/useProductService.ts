@@ -86,9 +86,9 @@ export function useOnSubmitProductForm() {
   return onSubmit;
 }
 
-export function useCheckOwner(productId: number) {
+export function useMyProduct(productId: number) {
   const { data, isError, isSuccess } = useQuery(
-    productQueryOptions.checkOwner(productId)
+    productQueryOptions.myProduct(productId)
   );
   const router = useRouter();
   if (isError) {
@@ -98,8 +98,12 @@ export function useCheckOwner(productId: number) {
 }
 
 export function useModifyProduct(productId: number) {
+  const queryClient = useQueryClient();
   const onSubmit = async (data: any) => {
     const res = await ProductService.modifyProduct(productId, data);
+    if (res.statusCode === 200) {
+      queryClient.invalidateQueries({ queryKey: ["myProduct", productId] });
+    }
     return res;
   };
 
