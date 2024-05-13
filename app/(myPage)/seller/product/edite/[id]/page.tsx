@@ -8,6 +8,7 @@ import ProductForm from "../../_components/ProductForm";
 import SubTitle from "@/app/(myPage)/_components/SubTitle";
 import { Direction } from "@/app/_components/block/Form/Form";
 import useLoadingMutation from "@/app/_hooks/useLoadingMutation";
+import { useUpsertOption } from "@/app/_service/product/option/useOptionService";
 
 interface Params {
   id: string;
@@ -20,7 +21,9 @@ export default function EditeProduct({ params }: Props) {
   const { id } = params;
   const { data } = useMyProduct(Number(id));
   const productInfoSubmit = useModifyProduct(Number(id));
+  const optionSubmit = useUpsertOption();
   const productInfoMutation = useLoadingMutation(productInfoSubmit);
+  const optionMutation = useLoadingMutation(optionSubmit);
   return (
     <>
       <SubTitle title={`${id}번 상품 수정`} />
@@ -81,10 +84,18 @@ export default function EditeProduct({ params }: Props) {
         }}
       />
       {/* <ProductForm
+      
           sunmitButtonText="상품 설명 이미지 수정"
           use={["productImages"]}
-        />
-        <ProductForm sunmitButtonText="옵션 수정" use={["option"]} /> */}
+        /> */}
+      <ProductForm
+        mutation={optionMutation}
+        sunmitButtonText="옵션 수정"
+        use={["option"]}
+        defaultValues={{
+          options: data?.data?.options,
+        }}
+      />
     </>
   );
 }

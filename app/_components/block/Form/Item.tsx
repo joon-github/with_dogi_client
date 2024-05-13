@@ -6,11 +6,12 @@ interface Props {
   label?: string | React.ReactNode;
   fieldKey: string;
   validation?: any;
-  children: React.ReactNode;
+  children?: React.ReactNode;
   icon?: React.ReactNode;
   watchField?: string;
   value?: any;
   className?: string;
+  nostyle?: boolean;
 }
 
 export default function Item({
@@ -21,6 +22,7 @@ export default function Item({
   watchField = "",
   value = null,
   className = "",
+  nostyle = false,
   children,
 }: Props) {
   const data = useContext(FormContext);
@@ -52,8 +54,10 @@ export default function Item({
   const errorClasses = isError
     ? "border border-red-500 focus:border-red-500"
     : "border border-gray-300";
-  return (
-    <div className="flex-1">
+  return nostyle ? (
+    childWithProps
+  ) : (
+    <div className={`flex-1 ${nostyle ? "hidden" : ""}`}>
       <div
         className={`flex items-center min-h-14  ${errorClasses} rounded-md  bg-white ${className}`}
       >

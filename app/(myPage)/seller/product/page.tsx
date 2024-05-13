@@ -7,9 +7,9 @@ export default function SellerProducts() {
   return (
     <>
       <SubTitle title="상품관리">
-        <Button>
-          <Link href="/seller/product/create">상품 추가</Link>
-        </Button>
+        <Link href="/seller/product/create">
+          <Button>상품 추가</Button>
+        </Link>
       </SubTitle>
       <div className="flex flex-col gap-4 h-full">
         <ProductListTabel />

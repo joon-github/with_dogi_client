@@ -5,7 +5,7 @@ import ImageUpload from "@/app/_components/block/ImageUpload";
 import useAlert from "@/app/_hooks/useAlert";
 import { required } from "@/app/_utils/validations";
 import { Button } from "@nextui-org/react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FaMinusCircle, FaPlusCircle } from "react-icons/fa";
 
 interface StringMap {
@@ -14,15 +14,33 @@ interface StringMap {
 
 interface Option {
   optionId: number;
+  optionName?: string;
+  addPrice?: number;
+  stock?: number;
+  imageUrl?: string;
+  state?: boolean;
 }
 
-export default function Options({ defaultValue }: { defaultValue?: any }) {
+interface Props {
+  defaultValue?: { options: Option[] };
+}
+
+export default function Options({ defaultValue }: Props) {
   const { alert } = useAlert();
   const [addOption, setAddOption] = useState<Option[]>([{ optionId: 0 }]);
   const [optionImages, setOptionImages] = useState<StringMap>({});
   const onClickAddOption = () => {
     const maxId = Math.max(...addOption.map((item) => item.optionId)) || 0;
-    setAddOption([...addOption, { optionId: maxId + 1 }]);
+    setAddOption([
+      ...addOption,
+      {
+        optionId: maxId + 1,
+        optionName: "",
+        addPrice: 0,
+        stock: 0,
+        state: true,
+      },
+    ]);
   };
   const onClickRemoveOption = (optionId: number) => {
     if (optionId === 0) {
@@ -30,8 +48,22 @@ export default function Options({ defaultValue }: { defaultValue?: any }) {
       return;
     }
     const newOption = addOption.filter((item) => item.optionId !== optionId);
+    const newOptionImages = { ...optionImages };
+    delete newOptionImages[optionId];
+    setOptionImages(newOptionImages);
     setAddOption(newOption);
   };
+
+  useEffect(() => {
+    if (defaultValue?.options) {
+      setAddOption(defaultValue.options);
+      const optionImages = defaultValue.options.reduce(
+        (acc: StringMap, cur) => ({ ...acc, [cur.optionId]: cur.imageUrl }),
+        {}
+      );
+      setOptionImages(optionImages);
+    }
+  }, [defaultValue]);
   return (
     <div>
       <div id="productOption" className="flex-1">
@@ -49,29 +81,35 @@ export default function Options({ defaultValue }: { defaultValue?: any }) {
           </button>
         </div>
         <div className="flex flex-col gap-4">
-          {addOption.map((item) => {
+          {addOption?.map((item) => {
             return (
               <div key={item.optionId} className="flex gap-4">
+                <FormComponents.Item
+                  fieldKey={`option-state-${item.optionId}`}
+                  value={item.state}
+                  nostyle
+                />
+
                 <FormComponents.Item
                   label="옵션 이름"
                   fieldKey={`option-name-${item.optionId}`}
                   validation={required("옵션 이름을 입력해 주세요.")}
                 >
-                  <FormComponents.Input maxLength={100} />
-                </FormComponents.Item>
-                <FormComponents.Item
-                  label="옵션 금액"
-                  fieldKey={`option-addPrice-${item.optionId}`}
-                  validation={required("옵션 금액을 입력해 주세요.")}
-                >
-                  <FormComponents.Input type="number" maxLength={100} />
+                  <FormComponents.Input
+                    maxLength={100}
+                    defaultValue={item.optionName}
+                  />
                 </FormComponents.Item>
                 <FormComponents.Item
                   label="옵션 수량"
                   fieldKey={`option-stock-${item.optionId}`}
                   validation={required("옵션 수량을 입력해 주세요.")}
                 >
-                  <FormComponents.Input type="number" maxLength={100} />
+                  <FormComponents.Input
+                    type="number"
+                    maxLength={100}
+                    defaultValue={item.stock}
+                  />
                 </FormComponents.Item>
                 <FormComponents.Item
                   label="옵션 이미지"
@@ -80,6 +118,7 @@ export default function Options({ defaultValue }: { defaultValue?: any }) {
                 >
                   <FormComponents.Input className="hidden" />
                   <ImageUpload
+                    defaultValues={optionImages[item.optionId]}
                     setImages={(image: any) => {
                       setOptionImages((prev: any) => {
                         return { ...prev, [item.optionId]: image };
@@ -87,16 +126,18 @@ export default function Options({ defaultValue }: { defaultValue?: any }) {
                     }}
                   />
                 </FormComponents.Item>
-                <div className="flex">
-                  <Button
-                    type="button"
-                    onClick={() => onClickRemoveOption(item.optionId)}
-                  >
-                    <div className="flex h-[38px] items-center justify-center">
-                      <FaMinusCircle size={24} />
-                    </div>
-                  </Button>
-                </div>
+                {!defaultValue?.options && (
+                  <div className="flex">
+                    <Button
+                      type="button"
+                      onClick={() => onClickRemoveOption(item.optionId)}
+                    >
+                      <div className="flex h-[38px] items-center justify-center">
+                        <FaMinusCircle size={24} />
+                      </div>
+                    </Button>
+                  </div>
+                )}
               </div>
             );
           })}
