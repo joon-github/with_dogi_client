@@ -21,7 +21,7 @@ function parseOptions(data: KeyValue): Option[] {
       addPrice: 0,
       stock: 0,
     };
-    if (key.includes("state") && data[key]) {
+    if (key.includes("state") && !data[key]) {
       result[index].optionId = index;
     }
 
