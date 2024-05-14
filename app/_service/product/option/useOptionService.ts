@@ -1,13 +1,6 @@
 import OptionService from "./OptionService";
+import { Option } from "../product.entity"
 
-interface Option {
-  optionId?: number;
-  optionName: string;
-  addPrice: number;
-  stock: number;
-  file?: string;
-  state?: boolean;
-}
 interface KeyValue {
   [key: string]: string;
 }

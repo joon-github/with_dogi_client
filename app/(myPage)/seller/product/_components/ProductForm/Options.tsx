@@ -3,6 +3,7 @@ import { AlertStatus } from "@/app/_components/block/Alert";
 import FormComponents from "@/app/_components/block/Form";
 import ImageUpload from "@/app/_components/block/ImageUpload";
 import useAlert from "@/app/_hooks/useAlert";
+import { Option } from "@/app/_service/product/product.entity";
 import { required } from "@/app/_utils/validations";
 import { Button } from "@nextui-org/react";
 import { useEffect, useState } from "react";
@@ -12,14 +13,7 @@ interface StringMap {
   [key: string]: string;
 }
 
-interface Option {
-  optionId: number;
-  optionName?: string;
-  addPrice?: number;
-  stock?: number;
-  imageUrl?: string;
-  state?: boolean;
-}
+
 
 interface Props {
   defaultValue?: { options: Option[] };
@@ -30,7 +24,7 @@ export default function Options({ defaultValue }: Props) {
   const [addOption, setAddOption] = useState<Option[]>([{ optionId: 0 }]);
   const [optionImages, setOptionImages] = useState<StringMap>({});
   const onClickAddOption = () => {
-    const maxId = Math.max(...addOption.map((item) => item.optionId)) || 0;
+    const maxId = Math.max(...addOption.map((item) => item.optionId || 0));
     setAddOption([
       ...addOption,
       {

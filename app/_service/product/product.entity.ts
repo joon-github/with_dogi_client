@@ -7,12 +7,13 @@ export interface Brand {
 
 export interface Option {
   optionId: number;
-  optionName: string;
-  addPrice: number;
-  stock: number;
-  imageUrl: string;
+  optionName?: string;
+  addPrice?: number;
+  stock?: number;
+  file?: string;
+  imageUrl?: string;
+  state?: boolean;
 }
-
 export interface Image {
   imageId: number;
   imageUrl: string;
