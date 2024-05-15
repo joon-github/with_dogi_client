@@ -1,5 +1,7 @@
 import OptionService from "./OptionService";
-import { Option } from "../product.entity"
+import { Option } from "../product.entity";
+import { useQueryClient } from "@tanstack/react-query";
+import { ProductQueryKey } from "../productQueryOption";
 
 interface KeyValue {
   [key: string]: string;
@@ -30,11 +32,18 @@ function parseOptions(data: KeyValue): Option[] {
   });
   return result.filter((option) => option.optionName);
 }
-export function useUpsertOption() {
+export function useUpsertOption(productId: number) {
+  const queryClient = useQueryClient();
   const onSubmit = async (data: any) => {
-    console.log(data);
-    console.log(parseOptions(data));
-    // return OptionService.upsertOption(data);
+    const formData = new FormData();
+    formData.append("options", JSON.stringify(parseOptions(data)));
+    const res = await OptionService.upsertOption(formData, productId);
+    if (res.statusCode === 200) {
+      queryClient.invalidateQueries({
+        queryKey: ProductQueryKey.myProduct(productId),
+      });
+    }
+    return res;
   };
   return onSubmit;
 }

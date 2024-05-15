@@ -21,8 +21,8 @@ export default function EditeProduct({ params }: Props) {
   const { id } = params;
   const { data } = useMyProduct(Number(id));
   const productInfoSubmit = useModifyProduct(Number(id));
-  const optionSubmit = useUpsertOption();
   const productInfoMutation = useLoadingMutation(productInfoSubmit);
+  const optionSubmit = useUpsertOption(Number(id));
   const optionMutation = useLoadingMutation(optionSubmit);
   return (
     <>

@@ -4,6 +4,8 @@ export const ProductQueryKey = {
   myBrand: () => ["myBrand"] as const,
 
   myProductList: () => ["myProductList"] as const,
+
+  myProduct: (productId: number) => ["myProduct", productId] as const,
 };
 
 const productQueryOptions = {
@@ -18,7 +20,7 @@ const productQueryOptions = {
   }),
 
   myProduct: (productId: number) => ({
-    queryKey: ["myProduct", productId],
+    queryKey: ProductQueryKey.myProduct(productId),
     queryFn: () => ProductService.myProduct(productId),
   }),
 };
