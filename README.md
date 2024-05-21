@@ -1,37 +1,50 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 위드도기 (WithDoggy)
 
-## Getting Started
+안녕하세요! "위드도기" 개발자 편범준입니다. 저는 강아지를 사랑하는 사람들을 위해 강아지 용품 쇼핑몰과 소통할 수 있는 강아지 커뮤니티를 제공하는 개인 프로젝트를 진행하고 있습니다.
 
-First, run the development server:
+## 프로젝트 목표
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+"**위드도기**"는 강아지와 함께하는 즐거운 시간을 제공하는 동시에, 강아지를 키우는 사람들끼리 소통하고 정보를 공유할 수 있는 특별한 공간을 만드는 것이 목표입니다. 강아지 용품 쇼핑몰과 함께 강아지 커뮤니티를 운영하여 사람들이 서로를 도와주며, 더 행복한 반려견 생활을 할 수 있도록 지원하고자 합니다.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 주요 기능
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1. **제품 다양성**: 
+   - "위드도기"은 강아지의 다양한 욕구와 필요에 맞춰 다양한 종류의 용품들을 제공합니다. 간식과 사료, 침구류, 산책용품, 패션 아이템 등 다양한 카테고리의 상품들을 제공하여 고객들이 원하는 제품을 손쉽게 찾을 수 있습니다.
+   
+2. **간편한 결제**: 
+   - 안전하고 빠른 결제 시스템을 구현하여 고객들이 원하는 제품을 간편하게 구매할 수 있도록 하고 있습니다. (현재 미구현, 포인트 차감 시스템 예정)
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+3. **제품 정보 제공**: 
+   - 상품 정보와 고객들의 솔직한 리뷰를 제공함으로써 구매자들이 제품을 잘 선택할 수 있도록 돕고 있습니다.
 
-## Learn More
+4. **강아지 커뮤니티**: 
+   - "위드도기" 커뮤니티는 강아지를 사랑하는 회원들끼리 소통할 수 있는 공간을 제공합니다. 회원들은 자유롭게 글을 작성하고, 사진과 동영상을 공유하며, 자신의 반려견들에 대한 경험과 노하우를 나눌 수 있습니다.
 
-To learn more about Next.js, take a look at the following resources:
+5. **이벤트와 소모임**: 
+   - "위드도기"는 강아지와 함께하는 다양한 이벤트를 개최하고 지역별 혹은 특정 주제에 따른 소모임을 구성하여 회원들이 더욱 즐겁고 다채로운 시간을 보낼 수 있도록 지원합니다.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 사용 스택
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+- **Front-end**:
+  - React
+  - Styled Components
+  - Ant Design (antd)
+  - React Query
+  - Toast UI Editor
+  - Recoil
 
-## Deploy on Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 프로젝트 설치 및 실행
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
-# with_dogi_client-with_NEXT-
+1. **클론 저장소**:
+    ```bash
+    git clone https://github.com/yourusername/withdoggy.git
+    ```
+
+2. **프론트엔드 설정**:
+    ```bash
+    pnpm install
+    pnpm start
+    ```
+
+
