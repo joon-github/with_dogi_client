@@ -31,6 +31,12 @@
   - Next Ui
   - React Query
   - Recoil
+    
+- **Back-end**:
+  - Nest.js
+  - MySQL
+  - TypeORM
+  - JWT
 
 
 ## 프로젝트 설치 및 실행
