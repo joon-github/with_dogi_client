@@ -28,9 +28,8 @@
 - **Front-end**:
   - React
   - Styled Components
-  - Ant Design (antd)
+  - Next Ui
   - React Query
-  - Toast UI Editor
   - Recoil
 
 
